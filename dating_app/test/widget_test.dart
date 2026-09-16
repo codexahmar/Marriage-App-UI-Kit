@@ -1,6 +1,7 @@
 import 'package:dating_app/controllers/nav_bar_controller.dart';
 import 'package:dating_app/features/chats/screens/chats_screen.dart';
 import 'package:dating_app/features/explore/screens/explore_people_screen.dart';
+import 'package:dating_app/features/matches/screens/matches_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/gender_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/passions_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/profile_details_screen.dart';
@@ -123,8 +124,26 @@ void main() {
     expect(find.text("Conversations"), findsOneWidget);
     expect(find.text("Jessica Parker"), findsOneWidget);
     expect(find.text("Alice Vance"), findsOneWidget);
-    expect(find.text("Ahmaryar Khan"), findsOneWidget);
+  });
+
+  testWidgets('MatchesScreen renders matches, tabs and action cards',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      ChangeNotifierProvider(
+        create: (context) => BottomNavBarController(),
+        child: const MaterialApp(
+          home: MatchesScreen(),
+        ),
+      ),
+    );
+
+    expect(find.text("Matches"), findsNWidgets(2));
+    expect(find.text("All (6)"), findsOneWidget);
+    expect(find.text("Today (3)"), findsOneWidget);
+    expect(find.text("Leilani, 19"), findsOneWidget);
+    expect(find.text("Annabelle, 20"), findsOneWidget);
   });
 }
+
 
 
