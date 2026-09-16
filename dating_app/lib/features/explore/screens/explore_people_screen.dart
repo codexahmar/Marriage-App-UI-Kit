@@ -51,7 +51,8 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
       age: 23,
       profession: "Haute Couture Model",
       distance: "1.2 km away",
-      bio: "Living between Chicago & NY. Always up for spontaneous road trips, art galleries & espresso.",
+      bio:
+          "Living between Chicago & NY. Always up for spontaneous road trips, art galleries & espresso.",
       vibe: "✨ Top Profile",
       interests: ["👗 Fashion", "🎨 Art History", "☕ Espresso", "✈️ Paris"],
       matchPercentage: 99,
@@ -62,9 +63,15 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
       age: 22,
       profession: "Lifestyle Creator",
       distance: "2.4 km away",
-      bio: "Finding the best hidden coffee roasters in the city. Golden hour enthusiast & indie music lover.",
+      bio:
+          "Finding the best hidden coffee roasters in the city. Golden hour enthusiast & indie music lover.",
       vibe: "⚡ Active Today",
-      interests: ["📸 35mm Film", "☕ Specialty Coffee", "🌅 Sunsets", "🎵 Indie Pop"],
+      interests: [
+        "📸 35mm Film",
+        "☕ Specialty Coffee",
+        "🌅 Sunsets",
+        "🎵 Indie Pop"
+      ],
       matchPercentage: 96,
     ),
     CandidateData(
@@ -73,9 +80,15 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
       age: 23,
       profession: "Travel & Nature Photographer",
       distance: "3.2 km away",
-      bio: "Living out of a backpack half the year. Sunset hikes, coastline drives, and film photography.",
+      bio:
+          "Living out of a backpack half the year. Sunset hikes, coastline drives, and film photography.",
       vibe: "🌿 Nature Lover",
-      interests: ["🏔️ Hiking", "🌊 Coastlines", "📷 Film Camera", "🏕️ Camping"],
+      interests: [
+        "🏔️ Hiking",
+        "🌊 Coastlines",
+        "📷 Film Camera",
+        "🏕️ Camping"
+      ],
       matchPercentage: 94,
     ),
     CandidateData(
@@ -84,7 +97,8 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
       age: 24,
       profession: "Avant-Garde Makeup Artist",
       distance: "4.0 km away",
-      bio: "Editorial beauty & visual artist. Obsessed with gold glitter, moody cinema, and late-night talks.",
+      bio:
+          "Editorial beauty & visual artist. Obsessed with gold glitter, moody cinema, and late-night talks.",
       vibe: "🔥 Creative Match",
       interests: ["✨ Glitter Art", "🎬 Cinema", "🎭 Theatre", "🍷 Wine Nights"],
       matchPercentage: 94,
@@ -95,7 +109,8 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
       age: 23,
       profession: "Fashion Consultant & Stylist",
       distance: "4.8 km away",
-      bio: "Styling editorials & consulting. Minimalist aesthetics, French house music, and rooftop dinners.",
+      bio:
+          "Styling editorials & consulting. Minimalist aesthetics, French house music, and rooftop dinners.",
       vibe: "✨ Verified",
       interests: ["👠 Styling", "🍸 Rooftops", "🎶 House Music", "✈️ Milan"],
       matchPercentage: 93,
@@ -106,9 +121,15 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
       age: 25,
       profession: "Indie Rock Lead & Musician",
       distance: "5.5 km away",
-      bio: "Frontwoman for an indie band. Vinyl collector, emerald dresses, and midnight studio sessions.",
+      bio:
+          "Frontwoman for an indie band. Vinyl collector, emerald dresses, and midnight studio sessions.",
       vibe: "🎸 Rockstar Energy",
-      interests: ["🎸 Electric Guitar", "⚡ Rock Music", "🖋️ Tattoos", "🎙️ Live Gigs"],
+      interests: [
+        "🎸 Electric Guitar",
+        "⚡ Rock Music",
+        "🖋️ Tattoos",
+        "🎙️ Live Gigs"
+      ],
       matchPercentage: 96,
     ),
     CandidateData(
@@ -117,18 +138,25 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
       age: 24,
       profession: "Editorial Fashion Model",
       distance: "6.2 km away",
-      bio: "Vintage sunglasses collector, modern art lover, and creative direction enthusiast.",
+      bio:
+          "Vintage sunglasses collector, modern art lover, and creative direction enthusiast.",
       vibe: "✨ Trending",
-      interests: ["🕶️ Vintage", "🦪 Pearls", "🎨 Modern Art", "🍸 Speakeasies"],
+      interests: [
+        "🕶️ Vintage",
+        "🦪 Pearls",
+        "🎨 Modern Art",
+        "🍸 Speakeasies"
+      ],
       matchPercentage: 95,
     ),
     CandidateData(
       image: "assets/images/cardswipe1.png",
       name: "Ahmaryar Khan",
-      age: 24,
+      age: 22,
       profession: "Mobile Software Engineer",
       distance: "3.5 km away",
-      bio: "Building clean Flutter apps by day, playing strategy games & gym workouts by night.",
+      bio:
+          "Building clean Flutter apps by day, playing strategy games & gym workouts by night.",
       vibe: "⚡ Fast Responder",
       interests: ["💻 Mobile Dev", "🎮 Gaming", "🏋️ Fitness", "🎧 Podcasts"],
       matchPercentage: 95,
