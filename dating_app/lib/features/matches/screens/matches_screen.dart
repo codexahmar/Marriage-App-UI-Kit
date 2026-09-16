@@ -1,5 +1,6 @@
 import 'package:dating_app/core/constants/app_colors.dart';
 import 'package:dating_app/core/routes/app_routes.dart';
+import 'package:dating_app/core/widgets/app_snackbar.dart';
 import 'package:dating_app/core/widgets/custom_bottom_navbar.dart';
 import 'package:dating_app/features/matches/models/match_model.dart';
 import 'package:dating_app/features/matches/widgets/match_card_item.dart';
@@ -28,13 +29,7 @@ class _MatchesScreenState extends State<MatchesScreen> {
   }
 
   void _onPassMatch(MatchModel match) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text("Passed on ${match.name}"),
-        duration: const Duration(seconds: 1),
-        behavior: SnackBarBehavior.floating,
-      ),
-    );
+    AppSnackBar.showInfo(context, "Passed on ${match.name}");
   }
 
   void _onLikeMatch(MatchModel match) {

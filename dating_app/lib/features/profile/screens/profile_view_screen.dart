@@ -1,10 +1,11 @@
 import 'package:dating_app/core/constants/app_assets.dart';
 import 'package:dating_app/core/constants/app_colors.dart';
+import 'package:dating_app/core/widgets/app_snackbar.dart';
 import 'package:dating_app/core/widgets/custom_bottom_navbar.dart';
+import 'package:dating_app/core/widgets/full_screen_image_viewer.dart';
 import 'package:dating_app/features/profile/widgets/interest_chip_list.dart';
 import 'package:dating_app/features/profile/widgets/profile_gallery_grid.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class ProfileViewScreen extends StatefulWidget {
   const ProfileViewScreen({super.key});
@@ -43,10 +44,24 @@ class _ProfileViewScreenState extends State<ProfileViewScreen> {
             expandedHeight: screenHeight * 0.70,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                AppAssets.photoMain,
-                width: double.infinity,
-                fit: BoxFit.cover,
+              background: GestureDetector(
+                onTap: () {
+                  FullScreenImageViewer.open(
+                    context,
+                    heroTag: 'profile_main_photo',
+                    imagePath: AppAssets.photoMain,
+                    title: "Jessica Parker, 23",
+                    subtitle: "Professional Model",
+                  );
+                },
+                child: Hero(
+                  tag: 'profile_main_photo',
+                  child: Image.asset(
+                    AppAssets.photoMain,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               collapseMode: CollapseMode.parallax,
             ),
@@ -86,7 +101,7 @@ class _ProfileViewScreenState extends State<ProfileViewScreen> {
                       IconButton(
                         icon: Image.asset(AppAssets.btnSend, width: 44, height: 44),
                         onPressed: () {
-                          Fluttertoast.showToast(msg: "Message sent");
+                          AppSnackBar.showSuccess(context, "Message sent");
                         },
                       ),
                     ],
@@ -113,7 +128,7 @@ class _ProfileViewScreenState extends State<ProfileViewScreen> {
                       IconButton(
                         icon: Image.asset(AppAssets.btnLocation, width: 44, height: 44),
                         onPressed: () {
-                          Fluttertoast.showToast(msg: "Location view opened");
+                          AppSnackBar.showInfo(context, "Location view opened");
                         },
                       ),
                     ],

@@ -1,5 +1,6 @@
 import 'package:dating_app/core/constants/app_colors.dart';
 import 'package:dating_app/core/routes/app_routes.dart';
+import 'package:dating_app/core/widgets/full_screen_image_viewer.dart';
 import 'package:dating_app/features/matches/models/match_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,48 +23,12 @@ class MatchDetailModal extends StatelessWidget {
   }
 
   void _openFullScreenPhoto(BuildContext context) {
-    showDialog(
-      context: context,
-      barrierColor: Colors.black.withValues(alpha: 0.95),
-      builder: (context) => Dialog(
-        backgroundColor: Colors.transparent,
-        insetPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 24),
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            InteractiveViewer(
-              minScale: 0.8,
-              maxScale: 3.5,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
-                  match.image,
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-            Positioned(
-              top: 10,
-              right: 10,
-              child: GestureDetector(
-                onTap: () => Navigator.pop(context),
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.black.withValues(alpha: 0.6),
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.close_rounded,
-                    color: Colors.white,
-                    size: 22,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+    FullScreenImageViewer.open(
+      context,
+      heroTag: 'match_photo_${match.id}',
+      imagePath: match.image,
+      title: "${match.name}, ${match.age}",
+      subtitle: match.profession,
     );
   }
 
@@ -122,11 +87,14 @@ class MatchDetailModal extends StatelessWidget {
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(23),
-                            child: Image.asset(
-                              match.image,
-                              width: double.infinity,
-                              fit: BoxFit.contain,
-                              alignment: Alignment.topCenter,
+                            child: Hero(
+                              tag: 'match_photo_${match.id}',
+                              child: Image.asset(
+                                match.image,
+                                width: double.infinity,
+                                fit: BoxFit.contain,
+                                alignment: Alignment.topCenter,
+                              ),
                             ),
                           ),
 

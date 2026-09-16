@@ -38,9 +38,12 @@ class MatchCardItem extends StatelessWidget {
             fit: StackFit.expand,
             children: [
               // Photo
-              Image.asset(
-                match.image,
-                fit: BoxFit.cover,
+              Hero(
+                tag: 'match_photo_${match.id}',
+                child: Image.asset(
+                  match.image,
+                  fit: BoxFit.cover,
+                ),
               ),
 
               // Bottom Vignette Gradient
