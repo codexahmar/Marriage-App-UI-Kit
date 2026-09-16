@@ -2,9 +2,9 @@ import 'dart:async';
 import 'package:dating_app/core/constants/app_colors.dart';
 import 'package:dating_app/core/routes/app_routes.dart';
 import 'package:dating_app/core/widgets/app_button.dart';
+import 'package:dating_app/core/widgets/app_snackbar.dart';
 import 'package:dating_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
@@ -44,7 +44,7 @@ class _OtpScreenState extends State<OtpScreen> {
   void _resendOtp() {
     _timer.cancel();
     _startTimer();
-    Fluttertoast.showToast(msg: "Verification code resent");
+    AppSnackBar.showSuccess(context, "Verification code resent");
   }
 
   @override
@@ -173,7 +173,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   if (_otp.length == 6 || _otp.isEmpty) {
                     Navigator.pushNamed(context, AppRoutes.profileDetails);
                   } else {
-                    Fluttertoast.showToast(msg: "Please enter complete OTP");
+                    AppSnackBar.showError(context, "Please enter complete OTP");
                   }
                 },
               ),
