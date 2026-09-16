@@ -1,5 +1,6 @@
 import 'package:dating_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class InterestChipList extends StatelessWidget {
   final List<String> interests;
@@ -18,14 +19,17 @@ class InterestChipList extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
           decoration: BoxDecoration(
-            color: AppColors.primaryLight,
+            color: AppColors.cardBackground,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppColors.primary.withValues(alpha: 0.3), width: 1),
+            border: Border.all(
+              color: AppColors.border,
+              width: 1.2,
+            ),
           ),
           child: Text(
             interest,
-            style: const TextStyle(
-              color: AppColors.primary,
+            style: GoogleFonts.plusJakartaSans(
+              color: AppColors.textPrimary,
               fontWeight: FontWeight.w600,
               fontSize: 13,
             ),

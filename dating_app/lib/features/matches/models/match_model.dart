@@ -16,6 +16,7 @@ class MatchModel {
   final List<String> interests;
   final String promptQuestion;
   final String promptAnswer;
+  final bool isLiked;
 
   const MatchModel({
     required this.id,
@@ -33,7 +34,46 @@ class MatchModel {
     required this.interests,
     required this.promptQuestion,
     required this.promptAnswer,
+    this.isLiked = false,
   });
+
+  MatchModel copyWith({
+    String? id,
+    String? name,
+    int? age,
+    String? image,
+    String? profession,
+    String? distance,
+    String? location,
+    int? matchPercentage,
+    bool? isVerified,
+    String? tag,
+    String? section,
+    String? bio,
+    List<String>? interests,
+    String? promptQuestion,
+    String? promptAnswer,
+    bool? isLiked,
+  }) {
+    return MatchModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      age: age ?? this.age,
+      image: image ?? this.image,
+      profession: profession ?? this.profession,
+      distance: distance ?? this.distance,
+      location: location ?? this.location,
+      matchPercentage: matchPercentage ?? this.matchPercentage,
+      isVerified: isVerified ?? this.isVerified,
+      tag: tag ?? this.tag,
+      section: section ?? this.section,
+      bio: bio ?? this.bio,
+      interests: interests ?? this.interests,
+      promptQuestion: promptQuestion ?? this.promptQuestion,
+      promptAnswer: promptAnswer ?? this.promptAnswer,
+      isLiked: isLiked ?? this.isLiked,
+    );
+  }
 
   static const List<MatchModel> defaultMatches = [
     MatchModel(
@@ -48,6 +88,7 @@ class MatchModel {
       isVerified: true,
       tag: "⚡ Super Match",
       section: "Today",
+      isLiked: true,
       bio:
           "Film camera collector, golden hour walks along the river, and testing every iced vanilla latte in town.",
       interests: ["📸 35mm Film", "☕ Matcha Lattes", "🌅 Golden Hour", "🎶 Indie Vinyl"],
@@ -67,6 +108,7 @@ class MatchModel {
       isVerified: true,
       tag: "✨ Liked You",
       section: "Today",
+      isLiked: false,
       bio:
           "Obsessed with mid-century modern design, museum dates, sketchbook doodles, and rooftop jazz.",
       interests: ["🏛️ Architecture", "🎨 Sketching", "🎷 Live Jazz", "🍷 Wine & Cheese"],
@@ -86,6 +128,7 @@ class MatchModel {
       isVerified: true,
       tag: "🔥 Hot Pick",
       section: "Today",
+      isLiked: true,
       bio:
           "Creating digital typography by day, discovering speakeasies & attending modern gallery openings by night.",
       interests: ["✨ UI Design", "🍸 Speakeasies", "🖼️ Galleries", "🎧 Synthwave"],
@@ -105,6 +148,7 @@ class MatchModel {
       isVerified: true,
       tag: "✨ Liked You",
       section: "Yesterday",
+      isLiked: false,
       bio:
           "Road trips across coastlines with a camera in hand. Golden retriever mom and sourdough baking amateur.",
       interests: ["📷 Photography", "🏕️ Road Trips", "🐕 Dogs", "🥖 Baking"],
@@ -124,6 +168,7 @@ class MatchModel {
       isVerified: true,
       tag: "⚡ Top Match",
       section: "Yesterday",
+      isLiked: true,
       bio:
           "Direction for indie fashion magazines. French cinema buff, emerald aesthetics, and vintage furniture hunting.",
       interests: ["🎬 French Cinema", "👗 Fashion Direction", "🛋️ Vintage", "🍷 Red Wine"],
@@ -143,6 +188,7 @@ class MatchModel {
       isVerified: true,
       tag: "✨ Liked You",
       section: "Yesterday",
+      isLiked: false,
       bio:
           "Styling editorial shoots, matcha enthusiast, and finding the best vintage thrift stores in West Town.",
       interests: ["👗 Styling", "🍵 Matcha", "🛍️ Thrifting", "✈️ Paris"],

@@ -27,7 +27,11 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
   }
 
   void _openCandidateDetails(CandidateModel candidate) {
-    Navigator.pushNamed(context, AppRoutes.profile);
+    Navigator.pushNamed(
+      context,
+      AppRoutes.profile,
+      arguments: candidate,
+    );
   }
 
   @override

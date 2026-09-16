@@ -179,12 +179,14 @@ class MatchCardItem extends StatelessWidget {
                             child: Container(
                               height: 36,
                               decoration: BoxDecoration(
-                                color: AppColors.primary,
+                                color: Colors.white.withValues(alpha: 0.25),
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              child: const Icon(
+                              child: Icon(
                                 Icons.favorite_rounded,
-                                color: Colors.white,
+                                color: match.isLiked
+                                    ? AppColors.primary
+                                    : Colors.white,
                                 size: 18,
                               ),
                             ),

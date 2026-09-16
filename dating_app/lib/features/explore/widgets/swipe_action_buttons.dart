@@ -18,17 +18,20 @@ class SwipeActionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 4.0, bottom: 8.0),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 32.0),
+      height: 118,
       child: Stack(
         alignment: Alignment.bottomCenter,
         clipBehavior: Clip.none,
         children: [
-          // Base row for Left (Pass) and Right (Super Like) buttons on the same horizontal line
-          Padding(
-            padding: const EdgeInsets.only(top: 20.0),
+          // Base row for Left (Pass) and Right (Super Like) buttons on the exact same horizontal baseline
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 4,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 // Left Button: PASS
@@ -37,12 +40,9 @@ class SwipeActionButtons extends StatelessWidget {
                   icon: Icons.close_rounded,
                   color: const Color(0xFFEF4444),
                   onTap: onDislike,
-                  size: 58,
-                  iconSize: 28,
+                  size: 60,
+                  iconSize: 30,
                 ),
-
-                // Empty placeholder space for the elevated center heart button
-                const SizedBox(width: 80),
 
                 // Right Button: SUPER LIKE
                 _ScaleActionButton(
@@ -50,14 +50,14 @@ class SwipeActionButtons extends StatelessWidget {
                   icon: Icons.star_rounded,
                   color: const Color(0xFF8A2387),
                   onTap: onStar,
-                  size: 58,
-                  iconSize: 28,
+                  size: 60,
+                  iconSize: 30,
                 ),
               ],
             ),
           ),
 
-          // Center Button: Elevated Top DATE / LIKE Hero Button
+          // Center Button: Distinctly elevated higher DATE / LIKE Hero Button
           Positioned(
             top: 0,
             child: _ScaleActionButton(
@@ -67,12 +67,12 @@ class SwipeActionButtons extends StatelessWidget {
               isHero: true,
               gradient: AppColors.primaryGradient,
               onTap: onLike,
-              size: 72,
-              iconSize: 34,
+              size: 78,
+              iconSize: 38,
               boxShadow: [
                 BoxShadow(
                   color: AppColors.primary.withValues(alpha: 0.45),
-                  blurRadius: 20,
+                  blurRadius: 22,
                   offset: const Offset(0, 8),
                 ),
               ],

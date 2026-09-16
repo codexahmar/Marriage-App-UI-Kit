@@ -3,6 +3,7 @@ import 'package:dating_app/features/chats/screens/chats_screen.dart';
 import 'package:dating_app/features/explore/screens/explore_people_screen.dart';
 import 'package:dating_app/features/explore/widgets/explore_filter_modal.dart';
 import 'package:dating_app/features/matches/screens/matches_screen.dart';
+import 'package:dating_app/features/profile/screens/profile_view_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/gender_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/passions_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/profile_details_screen.dart';
@@ -168,6 +169,22 @@ void main() {
     expect(find.text("Age"), findsOneWidget);
     expect(find.text("20-28"), findsOneWidget);
     expect(find.text("Continue"), findsOneWidget);
+  });
+
+  testWidgets('ProfileViewScreen renders candidate details and actions properly',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: ProfileViewScreen(),
+      ),
+    );
+
+    expect(find.text("Alice Vance, 22"), findsOneWidget);
+    expect(find.text("Lifestyle Creator"), findsOneWidget);
+    expect(find.text("About"), findsOneWidget);
+    expect(find.text("Interests"), findsOneWidget);
+    expect(find.text("Gallery"), findsOneWidget);
+    expect(find.text("Send Like"), findsOneWidget);
   });
 }
 

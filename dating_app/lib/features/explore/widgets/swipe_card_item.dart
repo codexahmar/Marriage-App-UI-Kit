@@ -57,17 +57,20 @@ class SwipeCardItem extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             // 1. Candidate Photo
-            Image.asset(
-              imagePath,
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: double.infinity,
-              errorBuilder: (context, error, stackTrace) => Container(
-                color: AppColors.cardBackground,
-                child: const Icon(
-                  Icons.person,
-                  size: 80,
-                  color: AppColors.textMuted,
+            Hero(
+              tag: 'candidate_photo_${candidate.name}',
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
+                errorBuilder: (context, error, stackTrace) => Container(
+                  color: AppColors.cardBackground,
+                  child: const Icon(
+                    Icons.person,
+                    size: 80,
+                    color: AppColors.textMuted,
+                  ),
                 ),
               ),
             ),

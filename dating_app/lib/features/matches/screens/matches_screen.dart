@@ -16,8 +16,14 @@ class MatchesScreen extends StatefulWidget {
 }
 
 class _MatchesScreenState extends State<MatchesScreen> {
-  final List<MatchModel> _matches = MatchModel.defaultMatches;
+  late List<MatchModel> _matches;
   String _selectedFilter = "All";
+
+  @override
+  void initState() {
+    super.initState();
+    _matches = List<MatchModel>.from(MatchModel.defaultMatches);
+  }
 
   List<MatchModel> get _filteredMatches {
     if (_selectedFilter == "Today") {
@@ -33,7 +39,18 @@ class _MatchesScreenState extends State<MatchesScreen> {
   }
 
   void _onLikeMatch(MatchModel match) {
-    AppSnackBar.showMatch(context, "Matched with ${match.name}! 💕");
+    setState(() {
+      final index = _matches.indexWhere((m) => m.id == match.id);
+      if (index != -1) {
+        final newLiked = !_matches[index].isLiked;
+        _matches[index] = _matches[index].copyWith(isLiked: newLiked);
+        if (newLiked) {
+          AppSnackBar.showMatch(context, "Matched with ${match.name}! 💕");
+        } else {
+          AppSnackBar.showInfo(context, "Unliked ${match.name}");
+        }
+      }
+    });
   }
 
   @override
