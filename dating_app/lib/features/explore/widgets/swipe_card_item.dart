@@ -31,9 +31,9 @@ class SwipeCardItem extends StatelessWidget {
     final matchPercentage = candidate.matchPercentage;
 
     // Calculate real-time swipe stamp opacity based on drag progress
-    final double likeOpacity = (percentX / 35).clamp(0.0, 1.0);
-    final double nopeOpacity = (-percentX / 35).clamp(0.0, 1.0);
-    final double starOpacity = (-percentY / 35).clamp(0.0, 1.0);
+    final double likeOpacity = (percentX / 25).clamp(0.0, 1.0);
+    final double nopeOpacity = (-percentX / 25).clamp(0.0, 1.0);
+    final double starOpacity = (-percentY / 25).clamp(0.0, 1.0);
 
     return Container(
       decoration: BoxDecoration(

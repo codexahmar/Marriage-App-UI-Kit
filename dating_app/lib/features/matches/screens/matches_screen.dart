@@ -33,7 +33,7 @@ class _MatchesScreenState extends State<MatchesScreen> {
   }
 
   void _onLikeMatch(MatchModel match) {
-    MatchDetailModal.show(context, match);
+    AppSnackBar.showMatch(context, "Matched with ${match.name}! 💕");
   }
 
   @override

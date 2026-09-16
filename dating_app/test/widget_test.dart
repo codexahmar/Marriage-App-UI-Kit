@@ -1,6 +1,7 @@
 import 'package:dating_app/controllers/nav_bar_controller.dart';
 import 'package:dating_app/features/chats/screens/chats_screen.dart';
 import 'package:dating_app/features/explore/screens/explore_people_screen.dart';
+import 'package:dating_app/features/explore/widgets/explore_filter_modal.dart';
 import 'package:dating_app/features/matches/screens/matches_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/gender_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/passions_screen.dart';
@@ -142,6 +143,31 @@ void main() {
     expect(find.text("Today (3)"), findsOneWidget);
     expect(find.text("Leilani, 19"), findsOneWidget);
     expect(find.text("Annabelle, 20"), findsOneWidget);
+  });
+
+  testWidgets('ExploreFilterModal renders all filter controls properly',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: ExploreFilterModal(),
+        ),
+      ),
+    );
+
+    expect(find.text("Filters"), findsOneWidget);
+    expect(find.text("Clear"), findsOneWidget);
+    expect(find.text("Interested in"), findsOneWidget);
+    expect(find.text("Girls"), findsOneWidget);
+    expect(find.text("Boys"), findsOneWidget);
+    expect(find.text("Both"), findsOneWidget);
+    expect(find.text("Location"), findsOneWidget);
+    expect(find.text("Chicago, USA"), findsOneWidget);
+    expect(find.text("Distance"), findsOneWidget);
+    expect(find.text("40km"), findsOneWidget);
+    expect(find.text("Age"), findsOneWidget);
+    expect(find.text("20-28"), findsOneWidget);
+    expect(find.text("Continue"), findsOneWidget);
   });
 }
 

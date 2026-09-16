@@ -2,6 +2,7 @@ import 'package:dating_app/core/constants/app_colors.dart';
 import 'package:dating_app/core/routes/app_routes.dart';
 import 'package:dating_app/core/widgets/custom_bottom_navbar.dart';
 import 'package:dating_app/features/explore/models/candidate_model.dart';
+import 'package:dating_app/features/explore/widgets/explore_filter_modal.dart';
 import 'package:dating_app/features/explore/widgets/swipe_action_buttons.dart';
 import 'package:dating_app/features/explore/widgets/swipe_card_item.dart';
 import 'package:flutter/material.dart';
@@ -108,7 +109,9 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
             padding: const EdgeInsets.only(right: 16.0),
             child: Center(
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  ExploreFilterModal.show(context);
+                },
                 child: Stack(
                   clipBehavior: Clip.none,
                   children: [
@@ -160,7 +163,7 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
                 child: CardSwiper(
                   controller: _cardSwiperController,
                   cardsCount: _candidates.length,
-                  duration: const Duration(milliseconds: 280),
+                  duration: const Duration(milliseconds: 650),
                   maxAngle: 25,
                   threshold: 50,
                   numberOfCardsDisplayed: 2,

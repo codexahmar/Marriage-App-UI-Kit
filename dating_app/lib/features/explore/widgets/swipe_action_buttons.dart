@@ -2,7 +2,7 @@ import 'package:dating_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SwipeActionButtons extends StatefulWidget {
+class SwipeActionButtons extends StatelessWidget {
   final VoidCallback onDislike;
   final VoidCallback onLike;
   final VoidCallback onStar;
@@ -15,81 +15,6 @@ class SwipeActionButtons extends StatefulWidget {
     required this.onStar,
     this.onUndo,
   });
-
-  @override
-  State<SwipeActionButtons> createState() => _SwipeActionButtonsState();
-}
-
-class _SwipeActionButtonsState extends State<SwipeActionButtons> {
-  Widget _buildActionButtonWithLabel({
-    required String label,
-    required IconData icon,
-    required Color color,
-    required VoidCallback onTap,
-    required double size,
-    required double iconSize,
-    bool isHero = false,
-    Gradient? gradient,
-    List<BoxShadow>? boxShadow,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: size,
-            height: size,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: gradient == null ? Colors.white : null,
-              gradient: gradient,
-              border: gradient == null
-                  ? Border.all(
-                      color: color.withValues(alpha: 0.28),
-                      width: 1.5,
-                    )
-                  : null,
-              boxShadow: boxShadow ??
-                  [
-                    BoxShadow(
-                      color: color.withValues(alpha: 0.16),
-                      blurRadius: 14,
-                      offset: const Offset(0, 5),
-                    ),
-                  ],
-            ),
-            child: Center(
-              child: Icon(
-                icon,
-                color: isHero ? Colors.white : color,
-                size: iconSize,
-              ),
-            ),
-          ),
-          const SizedBox(height: 6),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-            decoration: BoxDecoration(
-              color: isHero
-                  ? AppColors.primaryLight
-                  : color.withValues(alpha: 0.08),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Text(
-              label,
-              style: GoogleFonts.plusJakartaSans(
-                fontSize: isHero ? 12 : 11,
-                fontWeight: FontWeight.w800,
-                color: color,
-                letterSpacing: 0.6,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,11 +32,11 @@ class _SwipeActionButtonsState extends State<SwipeActionButtons> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 // Left Button: PASS
-                _buildActionButtonWithLabel(
+                _ScaleActionButton(
                   label: "PASS",
                   icon: Icons.close_rounded,
                   color: const Color(0xFFEF4444),
-                  onTap: widget.onDislike,
+                  onTap: onDislike,
                   size: 58,
                   iconSize: 28,
                 ),
@@ -120,11 +45,11 @@ class _SwipeActionButtonsState extends State<SwipeActionButtons> {
                 const SizedBox(width: 80),
 
                 // Right Button: SUPER LIKE
-                _buildActionButtonWithLabel(
+                _ScaleActionButton(
                   label: "SUPER LIKE",
                   icon: Icons.star_rounded,
                   color: const Color(0xFF8A2387),
-                  onTap: widget.onStar,
+                  onTap: onStar,
                   size: 58,
                   iconSize: 28,
                 ),
@@ -135,13 +60,13 @@ class _SwipeActionButtonsState extends State<SwipeActionButtons> {
           // Center Button: Elevated Top DATE / LIKE Hero Button
           Positioned(
             top: 0,
-            child: _buildActionButtonWithLabel(
+            child: _ScaleActionButton(
               label: "DATE",
               icon: Icons.favorite_rounded,
               color: AppColors.primary,
               isHero: true,
               gradient: AppColors.primaryGradient,
-              onTap: widget.onLike,
+              onTap: onLike,
               size: 72,
               iconSize: 34,
               boxShadow: [
@@ -154,6 +79,141 @@ class _SwipeActionButtonsState extends State<SwipeActionButtons> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _ScaleActionButton extends StatefulWidget {
+  final String label;
+  final IconData icon;
+  final Color color;
+  final VoidCallback onTap;
+  final double size;
+  final double iconSize;
+  final bool isHero;
+  final Gradient? gradient;
+  final List<BoxShadow>? boxShadow;
+
+  const _ScaleActionButton({
+    required this.label,
+    required this.icon,
+    required this.color,
+    required this.onTap,
+    required this.size,
+    required this.iconSize,
+    this.isHero = false,
+    this.gradient,
+    this.boxShadow,
+  });
+
+  @override
+  State<_ScaleActionButton> createState() => _ScaleActionButtonState();
+}
+
+class _ScaleActionButtonState extends State<_ScaleActionButton>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 100),
+      reverseDuration: const Duration(milliseconds: 140),
+    );
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.88).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _handleTapDown(TapDownDetails details) {
+    _controller.forward();
+  }
+
+  void _handleTapUp(TapUpDetails details) {
+    _controller.reverse();
+    widget.onTap();
+  }
+
+  void _handleTapCancel() {
+    _controller.reverse();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTapDown: _handleTapDown,
+      onTapUp: _handleTapUp,
+      onTapCancel: _handleTapCancel,
+      child: AnimatedBuilder(
+        animation: _scaleAnimation,
+        builder: (context, child) => Transform.scale(
+          scale: _scaleAnimation.value,
+          child: child,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: widget.size,
+              height: widget.size,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: widget.gradient == null ? Colors.white : null,
+                gradient: widget.gradient,
+                border: widget.gradient == null
+                    ? Border.all(
+                        color: widget.color.withValues(alpha: 0.28),
+                        width: 1.5,
+                      )
+                    : null,
+                boxShadow: widget.boxShadow ??
+                    [
+                      BoxShadow(
+                        color: widget.color.withValues(alpha: 0.16),
+                        blurRadius: 14,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
+              ),
+              child: Center(
+                child: Icon(
+                  widget.icon,
+                  color: widget.isHero ? Colors.white : widget.color,
+                  size: widget.iconSize,
+                ),
+              ),
+            ),
+            const SizedBox(height: 6),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+              decoration: BoxDecoration(
+                color: widget.isHero
+                    ? AppColors.primaryLight
+                    : widget.color.withValues(alpha: 0.08),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                widget.label,
+                style: GoogleFonts.plusJakartaSans(
+                  fontSize: widget.isHero ? 12 : 11,
+                  fontWeight: FontWeight.w800,
+                  color: widget.color,
+                  letterSpacing: 0.6,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

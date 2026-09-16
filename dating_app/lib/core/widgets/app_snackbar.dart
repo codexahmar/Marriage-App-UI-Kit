@@ -23,28 +23,33 @@ class AppSnackBar {
         margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
         padding: EdgeInsets.zero,
         content: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 14.0),
           decoration: BoxDecoration(
-            color: const Color(0xFF1E1E28),
-            borderRadius: BorderRadius.circular(16.0),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(18.0),
             border: Border.all(
-              color: Colors.white.withValues(alpha: 0.12),
-              width: 1.0,
+              color: AppColors.border,
+              width: 1.2,
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.25),
-                blurRadius: 16.0,
+                color: Colors.black.withValues(alpha: 0.10),
+                blurRadius: 20.0,
                 offset: const Offset(0, 6),
+              ),
+              BoxShadow(
+                color: AppColors.primary.withValues(alpha: 0.04),
+                blurRadius: 10.0,
+                offset: const Offset(0, 2),
               ),
             ],
           ),
           child: Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(6.0),
+                padding: const EdgeInsets.all(7.0),
                 decoration: BoxDecoration(
-                  color: iconColor.withValues(alpha: 0.15),
+                  color: iconColor.withValues(alpha: 0.12),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
@@ -58,9 +63,9 @@ class AppSnackBar {
                 child: Text(
                   message,
                   style: GoogleFonts.plusJakartaSans(
-                    fontSize: 13.5,
+                    fontSize: 14.0,
                     fontWeight: FontWeight.w600,
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     letterSpacing: -0.2,
                   ),
                 ),
