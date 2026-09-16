@@ -1,4 +1,5 @@
 import 'package:dating_app/controllers/nav_bar_controller.dart';
+import 'package:dating_app/features/chats/screens/chats_screen.dart';
 import 'package:dating_app/features/explore/screens/explore_people_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/gender_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/passions_screen.dart';
@@ -105,4 +106,25 @@ void main() {
     expect(find.byIcon(Icons.star_rounded), findsOneWidget);
     expect(find.byIcon(Icons.favorite_rounded), findsOneWidget);
   });
+
+  testWidgets('ChatsScreen renders messages, stories and filters properly',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      ChangeNotifierProvider(
+        create: (context) => BottomNavBarController(),
+        child: const MaterialApp(
+          home: ChatsScreen(),
+        ),
+      ),
+    );
+
+    expect(find.text("Messages"), findsOneWidget);
+    expect(find.text("New Matches"), findsOneWidget);
+    expect(find.text("Conversations"), findsOneWidget);
+    expect(find.text("Jessica Parker"), findsOneWidget);
+    expect(find.text("Alice Vance"), findsOneWidget);
+    expect(find.text("Ahmaryar Khan"), findsOneWidget);
+  });
 }
+
+

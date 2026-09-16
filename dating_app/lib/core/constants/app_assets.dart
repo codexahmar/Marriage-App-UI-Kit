@@ -33,9 +33,4 @@ class AppAssets {
   static const String matches4 = 'assets/images/matches4.png';
   static const String matches5 = 'assets/images/matches5.png';
   static const String matches6 = 'assets/images/matches6.png';
-
-  static const String user2 = 'assets/images/2.png';
-  static const String user3 = 'assets/images/3.png';
-  static const String user5 = 'assets/images/5.png';
-  static const String user6 = 'assets/images/6.png';
 }
