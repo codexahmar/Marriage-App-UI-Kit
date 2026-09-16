@@ -1,5 +1,6 @@
 import 'package:dating_app/controllers/nav_bar_controller.dart';
 import 'package:dating_app/features/chats/screens/chats_screen.dart';
+import 'package:dating_app/features/explore/screens/candidate_profile_screen.dart';
 import 'package:dating_app/features/explore/screens/explore_people_screen.dart';
 import 'package:dating_app/features/explore/widgets/explore_filter_modal.dart';
 import 'package:dating_app/features/matches/screens/matches_screen.dart';
@@ -171,11 +172,31 @@ void main() {
     expect(find.text("Continue"), findsOneWidget);
   });
 
-  testWidgets('ProfileViewScreen renders candidate details and actions properly',
+  testWidgets('ProfileViewScreen renders clean user profile and settings properly',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      ChangeNotifierProvider(
+        create: (context) => BottomNavBarController(),
+        child: const MaterialApp(
+          home: ProfileViewScreen(),
+        ),
+      ),
+    );
+
+    expect(find.text("Profile"), findsNWidgets(2));
+    expect(find.text("Ahmaryar Khan, 22"), findsOneWidget);
+    expect(find.text("Edit Profile"), findsOneWidget);
+    expect(find.text("Discovery Settings"), findsOneWidget);
+    expect(find.text("Incognito Mode"), findsOneWidget);
+    expect(find.text("Notifications"), findsOneWidget);
+    expect(find.text("Log Out"), findsOneWidget);
+  });
+
+  testWidgets('CandidateProfileScreen renders candidate details and actions properly',
       (WidgetTester tester) async {
     await tester.pumpWidget(
       const MaterialApp(
-        home: ProfileViewScreen(),
+        home: CandidateProfileScreen(),
       ),
     );
 
