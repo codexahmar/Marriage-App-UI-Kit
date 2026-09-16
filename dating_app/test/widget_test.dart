@@ -1,4 +1,5 @@
 import 'package:dating_app/controllers/nav_bar_controller.dart';
+import 'package:dating_app/features/explore/screens/explore_people_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/gender_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/passions_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/profile_details_screen.dart';
@@ -85,5 +86,23 @@ void main() {
     expect(find.text("Your Interests"), findsOneWidget);
     expect(find.text("Travel"), findsOneWidget);
     expect(find.text("Continue"), findsOneWidget);
+  });
+
+  testWidgets('ExplorePeopleScreen renders app bar, cards and swipe action buttons',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      ChangeNotifierProvider(
+        create: (context) => BottomNavBarController(),
+        child: const MaterialApp(
+          home: ExplorePeopleScreen(),
+        ),
+      ),
+    );
+
+    expect(find.text("Discover"), findsOneWidget);
+    expect(find.text("Chicago, IL"), findsOneWidget);
+    expect(find.byIcon(Icons.close_rounded), findsOneWidget);
+    expect(find.byIcon(Icons.star_rounded), findsOneWidget);
+    expect(find.byIcon(Icons.favorite_rounded), findsOneWidget);
   });
 }
