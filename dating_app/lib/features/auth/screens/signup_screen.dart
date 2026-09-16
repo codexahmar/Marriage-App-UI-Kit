@@ -34,7 +34,8 @@ class SignUpScreen extends StatelessWidget {
         child: LayoutBuilder(
           builder: (context, constraints) {
             return SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 28.0, vertical: 12.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 28.0, vertical: 12.0),
               child: ConstrainedBox(
                 constraints: BoxConstraints(
                   minHeight: constraints.maxHeight - 24.0,
@@ -128,7 +129,8 @@ class SignUpScreen extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 14.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 14.0),
                             child: Text(
                               "or connect with",
                               style: GoogleFonts.plusJakartaSans(
@@ -156,13 +158,13 @@ class SignUpScreen extends StatelessWidget {
                         children: [
                           SocialAuthButton(
                             icon: Icons.facebook_rounded,
-                            iconColor: const Color(0xFF1877F2),
+                            iconColor: AppColors.primary,
                             onTap: () => _handleSocialSignUp(context),
                           ),
                           const SizedBox(width: 16),
                           SocialAuthButton(
                             icon: Icons.apple_rounded,
-                            iconColor: Colors.black,
+                            iconColor: AppColors.primary,
                             onTap: () => _handleSocialSignUp(context),
                           ),
                           const SizedBox(width: 16),
@@ -194,7 +196,8 @@ class SignUpScreen extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 10.0),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 10.0),
                               width: 4,
                               height: 4,
                               decoration: const BoxDecoration(
