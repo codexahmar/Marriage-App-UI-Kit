@@ -29,7 +29,7 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
   void _openCandidateDetails(CandidateModel candidate) {
     Navigator.pushNamed(
       context,
-      AppRoutes.profile,
+      AppRoutes.candidateProfile,
       arguments: candidate,
     );
   }

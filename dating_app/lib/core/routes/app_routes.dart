@@ -3,11 +3,11 @@ import 'package:dating_app/features/auth/screens/otp_screen.dart';
 import 'package:dating_app/features/auth/screens/signup_screen.dart';
 import 'package:dating_app/features/auth/screens/verification_screen.dart';
 import 'package:dating_app/features/chats/screens/chats_screen.dart';
+import 'package:dating_app/features/explore/screens/candidate_profile_screen.dart';
 import 'package:dating_app/features/explore/screens/explore_people_screen.dart';
 import 'package:dating_app/features/matches/screens/matches_screen.dart';
 import 'package:dating_app/features/onboarding/screens/onboarding_screen.dart';
 import 'package:dating_app/features/profile/screens/profile_view_screen.dart';
-import 'package:dating_app/features/profile/screens/user_profile_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/gender_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/passions_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/profile_details_screen.dart';
@@ -32,7 +32,7 @@ class AppRoutes {
   static const String matches = '/matches';
   static const String chats = '/chats';
   static const String profile = '/profile';
-  static const String userProfile = '/user-profile';
+  static const String candidateProfile = '/candidate-profile';
 
   static Map<String, WidgetBuilder> get routes {
     return {
@@ -51,7 +51,7 @@ class AppRoutes {
       matches: (context) => const MatchesScreen(),
       chats: (context) => const ChatsScreen(),
       profile: (context) => const ProfileViewScreen(),
-      userProfile: (context) => const UserProfileScreen(),
+      candidateProfile: (context) => const CandidateProfileScreen(),
     };
   }
 }
