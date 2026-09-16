@@ -48,7 +48,7 @@ class SignUpScreen extends StatelessWidget {
                       // Brand Hero Section
                       Center(
                         child: Image.asset(
-                          AppAssets.logo,
+                          AppImages.logo,
                           height: 90,
                           fit: BoxFit.contain,
                         ),

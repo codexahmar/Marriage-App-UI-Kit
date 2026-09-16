@@ -27,7 +27,7 @@ class CandidateModel {
 
   static const List<CandidateModel> defaultCandidates = [
     CandidateModel(
-      image: AppAssets.girl4,
+      image: AppImages.candidate1,
       name: "Alice Vance",
       age: 22,
       profession: "Lifestyle Creator",
@@ -44,7 +44,7 @@ class CandidateModel {
       matchPercentage: 96,
     ),
     CandidateModel(
-      image: AppAssets.cardSwipe1,
+      image: AppImages.userProfile,
       name: "Ahmaryar Khan",
       age: 22,
       profession: "Mobile Software Engineer",
@@ -56,7 +56,7 @@ class CandidateModel {
       matchPercentage: 95,
     ),
     CandidateModel(
-      image: AppAssets.girl1,
+      image: AppImages.candidate2,
       name: "Camille Laurent",
       age: 24,
       profession: "Avant-Garde Makeup Artist",
@@ -68,7 +68,7 @@ class CandidateModel {
       matchPercentage: 94,
     ),
     CandidateModel(
-      image: AppAssets.photoMain,
+      image: AppImages.candidate5,
       name: "Jessica Parker",
       age: 23,
       profession: "Haute Couture Model",
@@ -80,7 +80,7 @@ class CandidateModel {
       matchPercentage: 99,
     ),
     CandidateModel(
-      image: AppAssets.girl2,
+      image: AppImages.candidate3,
       name: "Chloe Evans",
       age: 23,
       profession: "Fashion Consultant & Stylist",
@@ -92,7 +92,7 @@ class CandidateModel {
       matchPercentage: 93,
     ),
     CandidateModel(
-      image: AppAssets.girl3,
+      image: AppImages.candidate4,
       name: "Roxie Wilde",
       age: 25,
       profession: "Indie Rock Lead & Musician",

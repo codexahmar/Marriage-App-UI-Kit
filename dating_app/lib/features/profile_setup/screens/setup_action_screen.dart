@@ -68,7 +68,7 @@ class SetupActionScreen extends StatelessWidget {
     final bool isFriends = type == SetupActionType.friends;
 
     final String imagePath = customImagePath ??
-        (isFriends ? AppAssets.people : AppAssets.chat);
+        (isFriends ? AppImages.illustrationPeople : AppImages.illustrationChat);
 
     final String title = customTitle ??
         (isFriends ? "Search Friends" : "Enable Notifications");

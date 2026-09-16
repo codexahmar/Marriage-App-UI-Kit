@@ -143,7 +143,7 @@ class _ProfileViewScreenState extends State<ProfileViewScreen> {
                                 FullScreenImageViewer.open(
                                   context,
                                   heroTag: 'user_profile_avatar',
-                                  imagePath: AppAssets.cardSwipe1,
+                                  imagePath: AppImages.userProfile,
                                   title: "Ahmaryar Khan, 22",
                                   subtitle: "Software Engineer • Islamabad, PK",
                                 );
@@ -153,7 +153,7 @@ class _ProfileViewScreenState extends State<ProfileViewScreen> {
                                 child: Hero(
                                   tag: 'user_profile_avatar',
                                   child: Image.asset(
-                                    AppAssets.cardSwipe1,
+                                    AppImages.userProfile,
                                     width: 76,
                                     height: 76,
                                     fit: BoxFit.cover,

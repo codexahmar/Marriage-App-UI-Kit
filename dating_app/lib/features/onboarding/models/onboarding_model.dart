@@ -18,7 +18,7 @@ class OnboardingModel {
 
   static const List<OnboardingModel> defaultPages = [
     OnboardingModel(
-      imagePath: AppAssets.girl1,
+      imagePath: AppImages.candidate2,
       tag: "Verified Profiles",
       tagIcon: Icons.verified_rounded,
       title: "Discover Real Connections",
@@ -26,7 +26,7 @@ class OnboardingModel {
           "Explore authentic profiles verified to ensure you meet genuine people who share your vibe and values.",
     ),
     OnboardingModel(
-      imagePath: AppAssets.girl2,
+      imagePath: AppImages.candidate3,
       tag: "Meaningful Matches",
       tagIcon: Icons.favorite_rounded,
       title: "Match On What Matters",
@@ -34,7 +34,7 @@ class OnboardingModel {
           "Connect with people who share your passions, lifestyle, and values for deeper, lasting bonds.",
     ),
     OnboardingModel(
-      imagePath: AppAssets.girl3,
+      imagePath: AppImages.candidate4,
       tag: "VIP Perks",
       tagIcon: Icons.workspace_premium_rounded,
       title: "Premium Experience",

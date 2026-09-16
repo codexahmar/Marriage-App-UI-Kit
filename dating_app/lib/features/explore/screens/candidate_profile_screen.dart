@@ -19,11 +19,11 @@ class CandidateProfileScreen extends StatelessWidget {
   });
 
   static const List<String> _galleryImages = [
-    AppAssets.photoMain2,
-    AppAssets.photoMain3,
-    AppAssets.photoMain4,
-    AppAssets.photoMain5,
-    AppAssets.photoMain6,
+    AppImages.gallery1,
+    AppImages.gallery2,
+    AppImages.gallery3,
+    AppImages.gallery4,
+    AppImages.gallery5,
   ];
 
   Widget _buildFactChip(IconData icon, String text) {
