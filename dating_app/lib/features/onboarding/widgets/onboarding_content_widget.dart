@@ -1,21 +1,14 @@
 import 'package:dating_app/core/constants/app_colors.dart';
+import 'package:dating_app/features/onboarding/models/onboarding_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OnboardingContentWidget extends StatelessWidget {
-  final String imagePath;
-  final String tag;
-  final IconData tagIcon;
-  final String title;
-  final String description;
+  final OnboardingModel model;
 
   const OnboardingContentWidget({
     super.key,
-    required this.imagePath,
-    required this.tag,
-    required this.tagIcon,
-    required this.title,
-    required this.description,
+    required this.model,
   });
 
   @override
@@ -62,7 +55,7 @@ class OnboardingContentWidget extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(22),
                       child: Image.asset(
-                        imagePath,
+                        model.imagePath,
                         fit: BoxFit.contain,
                         alignment: Alignment.topCenter,
                       ),
@@ -93,13 +86,13 @@ class OnboardingContentWidget extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Icon(
-                            tagIcon,
+                            model.tagIcon,
                             size: 15,
                             color: AppColors.primary,
                           ),
                           const SizedBox(width: 6),
                           Text(
-                            tag,
+                            model.tag,
                             style: GoogleFonts.plusJakartaSans(
                               fontSize: 12,
                               fontWeight: FontWeight.w700,
@@ -118,7 +111,7 @@ class OnboardingContentWidget extends StatelessWidget {
 
               // Title
               Text(
-                title,
+                model.title,
                 textAlign: TextAlign.center,
                 style: GoogleFonts.plusJakartaSans(
                   fontSize: 24,
@@ -135,7 +128,7 @@ class OnboardingContentWidget extends StatelessWidget {
               ConstrainedBox(
                 constraints: BoxConstraints(maxWidth: availableWidth * 0.86),
                 child: Text(
-                  description,
+                  model.description,
                   textAlign: TextAlign.center,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,

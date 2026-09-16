@@ -18,7 +18,7 @@ class UserProfileScreen extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(24),
           child: Image.asset(
-            AppAssets.jessica1,
+            AppAssets.photoMain,
             width: 300,
             height: 400,
             fit: BoxFit.cover,

@@ -25,9 +25,7 @@ class AppAssets {
   static const String photoMain5 = 'assets/images/photomain5.png';
   static const String photoMain6 = 'assets/images/photomain6.png';
 
-  static const String cardSwipe2 = 'assets/images/cardswipe2.HEIC';
-  static const String cardSwipe3 = 'assets/images/cardswipe3.HEIC';
-  static const String jessica1 = 'assets/images/jessica1.jpg';
+  static const String cardSwipe1 = 'assets/images/cardswipe1.png';
 
   static const String matches1 = 'assets/images/matches1.png';
   static const String matches2 = 'assets/images/matches2.png';

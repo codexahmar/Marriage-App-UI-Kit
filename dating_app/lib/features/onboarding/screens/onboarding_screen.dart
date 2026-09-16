@@ -1,9 +1,8 @@
 import 'package:dating_app/core/constants/app_colors.dart';
 import 'package:dating_app/core/routes/app_routes.dart';
 import 'package:dating_app/core/widgets/app_button.dart';
-import 'package:dating_app/features/onboarding/screens/onboarding_one_screen.dart';
-import 'package:dating_app/features/onboarding/screens/onboarding_three_screen.dart';
-import 'package:dating_app/features/onboarding/screens/onboarding_two_screen.dart';
+import 'package:dating_app/features/onboarding/models/onboarding_model.dart';
+import 'package:dating_app/features/onboarding/widgets/onboarding_content_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -17,8 +16,8 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
+  final List<OnboardingModel> _pages = OnboardingModel.defaultPages;
   int _currentPage = 0;
-  static const int _numPages = 3;
 
   @override
   void dispose() {
@@ -27,7 +26,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   void _onNext() {
-    if (_currentPage < _numPages - 1) {
+    if (_currentPage < _pages.length - 1) {
       _pageController.nextPage(
         duration: const Duration(milliseconds: 350),
         curve: Curves.easeInOutCubic,
@@ -78,18 +77,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
             // PageView Hero Content (Proportionally takes available vertical space)
             Expanded(
-              child: PageView(
+              child: PageView.builder(
                 controller: _pageController,
+                itemCount: _pages.length,
                 onPageChanged: (index) {
                   setState(() {
                     _currentPage = index;
                   });
                 },
-                children: const [
-                  OnboardingOneScreen(),
-                  OnboardingTwoScreen(),
-                  OnboardingThreeScreen(),
-                ],
+                itemBuilder: (context, index) {
+                  return OnboardingContentWidget(
+                    model: _pages[index],
+                  );
+                },
               ),
             ),
 
@@ -102,7 +102,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   // Smooth Animated Page Indicator
                   SmoothPageIndicator(
                     controller: _pageController,
-                    count: _numPages,
+                    count: _pages.length,
                     effect: const ExpandingDotsEffect(
                       activeDotColor: AppColors.primary,
                       dotColor: AppColors.border,
@@ -117,7 +117,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
                   // Primary Action Button
                   AppButton(
-                    text: _currentPage == _numPages - 1 ? "Create an account" : "Continue",
+                    text: _currentPage == _pages.length - 1 ? "Create an account" : "Continue",
                     elevation: 3,
                     suffixIcon: const Icon(
                       Icons.arrow_forward_rounded,

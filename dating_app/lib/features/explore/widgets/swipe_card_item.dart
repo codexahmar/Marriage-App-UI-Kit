@@ -1,35 +1,18 @@
 import 'dart:math' as math;
 import 'package:dating_app/core/constants/app_colors.dart';
+import 'package:dating_app/features/explore/models/candidate_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SwipeCardItem extends StatelessWidget {
-  final String imagePath;
-  final String name;
-  final int age;
-  final String profession;
-  final String distance;
-  final String bio;
-  final List<String> interests;
-  final String vibe;
-  final bool isVerified;
-  final int matchPercentage;
+  final CandidateModel candidate;
   final int percentX;
   final int percentY;
   final VoidCallback? onInfoTap;
 
   const SwipeCardItem({
     super.key,
-    required this.imagePath,
-    required this.name,
-    this.age = 24,
-    required this.profession,
-    this.distance = "2.5 km away",
-    this.bio = "Looking for someone to explore hidden coffee spots & indie music festivals with.",
-    this.interests = const ["✈️ Travel", "🎵 Music", "🎨 Art"],
-    this.vibe = "⚡ Active Today",
-    this.isVerified = true,
-    this.matchPercentage = 96,
+    required this.candidate,
     this.percentX = 0,
     this.percentY = 0,
     this.onInfoTap,
@@ -37,6 +20,16 @@ class SwipeCardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final imagePath = candidate.image;
+    final name = candidate.name;
+    final age = candidate.age;
+    final profession = candidate.profession;
+    final distance = candidate.distance;
+    final bio = candidate.bio;
+    final interests = candidate.interests;
+    final isVerified = candidate.isVerified;
+    final matchPercentage = candidate.matchPercentage;
+
     // Calculate real-time swipe stamp opacity based on drag progress
     final double likeOpacity = (percentX / 35).clamp(0.0, 1.0);
     final double nopeOpacity = (-percentX / 35).clamp(0.0, 1.0);
