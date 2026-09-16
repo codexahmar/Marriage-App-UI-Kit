@@ -1,7 +1,7 @@
+import 'package:dating_app/controllers/nav_bar_controller.dart';
 import 'package:dating_app/core/constants/app_colors.dart';
-import 'package:dating_app/core/routes/app_routes.dart';
 import 'package:dating_app/core/widgets/app_snackbar.dart';
-import 'package:dating_app/core/widgets/custom_bottom_navbar.dart';
+import 'package:provider/provider.dart';
 import 'package:dating_app/features/matches/models/match_model.dart';
 import 'package:dating_app/features/matches/widgets/match_card_item.dart';
 import 'package:dating_app/features/matches/widgets/match_detail_modal.dart';
@@ -93,7 +93,7 @@ class _MatchesScreenState extends State<MatchesScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, AppRoutes.chats);
+                      Provider.of<BottomNavBarController>(context, listen: false).setIndex(2);
                     },
                     child: Container(
                       width: 44,
@@ -217,7 +217,6 @@ class _MatchesScreenState extends State<MatchesScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
 }

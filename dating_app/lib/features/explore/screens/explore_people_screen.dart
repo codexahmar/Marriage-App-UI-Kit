@@ -1,6 +1,5 @@
 import 'package:dating_app/core/constants/app_colors.dart';
 import 'package:dating_app/core/routes/app_routes.dart';
-import 'package:dating_app/core/widgets/custom_bottom_navbar.dart';
 import 'package:dating_app/features/explore/models/candidate_model.dart';
 import 'package:dating_app/features/explore/widgets/explore_filter_modal.dart';
 import 'package:dating_app/features/explore/widgets/swipe_action_buttons.dart';
@@ -19,6 +18,7 @@ class ExplorePeopleScreen extends StatefulWidget {
 class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
   final CardSwiperController _cardSwiperController = CardSwiperController();
   final List<CandidateModel> _candidates = CandidateModel.defaultCandidates;
+  int _currentCardIndex = 0;
 
   @override
   void dispose() {
@@ -160,37 +160,134 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
           children: [
             const SizedBox(height: 6),
 
-            // Card Swiper Area with smooth card transitions
+            // Card Swiper Area with stacked side-peek background cards
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: CardSwiper(
-                  controller: _cardSwiperController,
-                  cardsCount: _candidates.length,
-                  duration: const Duration(milliseconds: 650),
-                  maxAngle: 25,
-                  threshold: 50,
-                  numberOfCardsDisplayed: 2,
-                  isLoop: true,
-                  backCardOffset: const Offset(0, -26),
-                  scale: 0.95,
-                  cardBuilder: (context, index, percentX, percentY) {
-                    final candidate = _candidates[index];
-                    return SwipeCardItem(
-                      candidate: candidate,
-                      percentX: percentX,
-                      percentY: percentY,
-                      onInfoTap: () => _openCandidateDetails(candidate),
-                    );
-                  },
-                  allowedSwipeDirection: const AllowedSwipeDirection.only(
-                    left: true,
-                    right: true,
-                    up: true,
-                  ),
-                  onSwipe: (previousIndex, current, direction) {
-                    return true;
-                  },
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    // Left Side Peek Card (Slightly tilted left)
+                    Positioned(
+                      left: -8,
+                      top: 14,
+                      bottom: 24,
+                      right: 32,
+                      child: Transform.rotate(
+                        angle: -0.042, // ~ -2.4 degrees
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(28),
+                            color: AppColors.cardBackground,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withValues(alpha: 0.12),
+                                blurRadius: 18,
+                                offset: const Offset(-4, 8),
+                              ),
+                            ],
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(28),
+                            child: Stack(
+                              fit: StackFit.expand,
+                              children: [
+                                Image.asset(
+                                  _candidates[(_currentCardIndex + 1) %
+                                          _candidates.length]
+                                      .image,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (_, __, ___) => Container(
+                                    color: const Color(0xFFE5E7EB),
+                                  ),
+                                ),
+                                Container(
+                                  color: Colors.black.withValues(alpha: 0.35),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    // Right Side Peek Card (Slightly tilted right)
+                    Positioned(
+                      right: -8,
+                      top: 14,
+                      bottom: 24,
+                      left: 32,
+                      child: Transform.rotate(
+                        angle: 0.042, // ~ +2.4 degrees
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(28),
+                            color: AppColors.cardBackground,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withValues(alpha: 0.12),
+                                blurRadius: 18,
+                                offset: const Offset(4, 8),
+                              ),
+                            ],
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(28),
+                            child: Stack(
+                              fit: StackFit.expand,
+                              children: [
+                                Image.asset(
+                                  _candidates[(_currentCardIndex + 2) %
+                                          _candidates.length]
+                                      .image,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (_, __, ___) => Container(
+                                    color: const Color(0xFFE5E7EB),
+                                  ),
+                                ),
+                                Container(
+                                  color: Colors.black.withValues(alpha: 0.35),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    // Interactive CardSwiper in Front
+                    CardSwiper(
+                      controller: _cardSwiperController,
+                      cardsCount: _candidates.length,
+                      duration: const Duration(milliseconds: 650),
+                      maxAngle: 25,
+                      threshold: 50,
+                      numberOfCardsDisplayed: 1,
+                      isLoop: true,
+                      cardBuilder: (context, index, percentX, percentY) {
+                        final candidate = _candidates[index];
+                        return SwipeCardItem(
+                          candidate: candidate,
+                          percentX: percentX,
+                          percentY: percentY,
+                          onInfoTap: () => _openCandidateDetails(candidate),
+                        );
+                      },
+                      allowedSwipeDirection: const AllowedSwipeDirection.only(
+                        left: true,
+                        right: true,
+                        up: true,
+                      ),
+                      onSwipe: (previousIndex, current, direction) {
+                        setState(() {
+                          _currentCardIndex = current ?? 0;
+                        });
+                        return true;
+                      },
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -210,7 +307,6 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:dating_app/core/constants/app_colors.dart';
-import 'package:dating_app/core/widgets/custom_bottom_navbar.dart';
 import 'package:dating_app/features/chats/models/chat_conversation_model.dart';
 import 'package:dating_app/features/chats/widgets/activity_story_avatar.dart';
 import 'package:dating_app/features/chats/widgets/chat_detail_modal.dart';
@@ -227,7 +226,6 @@ class _ChatsScreenState extends State<ChatsScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
 }

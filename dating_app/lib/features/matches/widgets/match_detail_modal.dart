@@ -1,6 +1,7 @@
+import 'package:dating_app/controllers/nav_bar_controller.dart';
 import 'package:dating_app/core/constants/app_colors.dart';
-import 'package:dating_app/core/routes/app_routes.dart';
 import 'package:dating_app/core/widgets/full_screen_image_viewer.dart';
+import 'package:provider/provider.dart';
 import 'package:dating_app/features/matches/models/match_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -384,7 +385,7 @@ class MatchDetailModal extends StatelessWidget {
                   child: ElevatedButton.icon(
                     onPressed: () {
                       Navigator.pop(context);
-                      Navigator.pushNamed(context, AppRoutes.chats);
+                      Provider.of<BottomNavBarController>(context, listen: false).setIndex(2);
                     },
                     icon: const Icon(
                       Icons.chat_bubble_rounded,

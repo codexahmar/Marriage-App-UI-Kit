@@ -1,7 +1,6 @@
 import 'package:dating_app/core/constants/app_assets.dart';
 import 'package:dating_app/core/constants/app_colors.dart';
 import 'package:dating_app/core/routes/app_routes.dart';
-import 'package:dating_app/core/widgets/custom_bottom_navbar.dart';
 import 'package:dating_app/core/widgets/full_screen_image_viewer.dart';
 import 'package:dating_app/features/profile/widgets/profile_menu_item.dart';
 import 'package:flutter/material.dart';
@@ -435,7 +434,6 @@ class _ProfileViewScreenState extends State<ProfileViewScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
 }

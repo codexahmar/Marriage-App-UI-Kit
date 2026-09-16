@@ -3,6 +3,7 @@ import 'package:dating_app/features/chats/screens/chats_screen.dart';
 import 'package:dating_app/features/explore/screens/candidate_profile_screen.dart';
 import 'package:dating_app/features/explore/screens/explore_people_screen.dart';
 import 'package:dating_app/features/explore/widgets/explore_filter_modal.dart';
+import 'package:dating_app/features/main/screens/main_navigation_screen.dart';
 import 'package:dating_app/features/matches/screens/matches_screen.dart';
 import 'package:dating_app/features/profile/screens/profile_view_screen.dart';
 import 'package:dating_app/features/profile_setup/screens/gender_screen.dart';
@@ -140,7 +141,7 @@ void main() {
       ),
     );
 
-    expect(find.text("Matches"), findsNWidgets(2));
+    expect(find.text("Matches"), findsOneWidget);
     expect(find.text("All (6)"), findsOneWidget);
     expect(find.text("Today (3)"), findsOneWidget);
     expect(find.text("Leilani, 19"), findsOneWidget);
@@ -183,8 +184,9 @@ void main() {
       ),
     );
 
-    expect(find.text("Profile"), findsNWidgets(2));
     expect(find.text("Ahmaryar Khan, 22"), findsOneWidget);
+    expect(find.text("Software Engineer"), findsOneWidget);
+    expect(find.text("Islamabad, PK"), findsOneWidget);
     expect(find.text("Edit Profile"), findsOneWidget);
     expect(find.text("Discovery Settings"), findsOneWidget);
     expect(find.text("Incognito Mode"), findsOneWidget);
@@ -206,6 +208,42 @@ void main() {
     expect(find.text("Interests"), findsOneWidget);
     expect(find.text("Gallery"), findsOneWidget);
     expect(find.text("Send Like"), findsOneWidget);
+  });
+
+  testWidgets('MainNavigationScreen switches tabs via bottom bar seamlessly',
+      (WidgetTester tester) async {
+    final controller = BottomNavBarController();
+    await tester.pumpWidget(
+      ChangeNotifierProvider.value(
+        value: controller,
+        child: const MaterialApp(
+          home: MainNavigationScreen(),
+        ),
+      ),
+    );
+
+    // Initial explore tab loaded
+    await tester.pumpAndSettle();
+    expect(find.text("Cards"), findsOneWidget);
+    expect(find.text("Matches"), findsOneWidget);
+    expect(find.text("Chat"), findsOneWidget);
+    expect(find.text("Profile"), findsOneWidget);
+
+    // Switch to Matches tab
+    await tester.tap(find.text("Matches"));
+    await tester.pumpAndSettle();
+    expect(controller.currentIndex, 1);
+
+    // Switch to Chat tab
+    await tester.tap(find.text("Chat"));
+    await tester.pumpAndSettle();
+    expect(controller.currentIndex, 2);
+
+    // Switch to Profile tab
+    await tester.tap(find.text("Profile"));
+    await tester.pumpAndSettle();
+    expect(controller.currentIndex, 3);
+    expect(find.text("Ahmaryar Khan, 22"), findsOneWidget);
   });
 }
 
