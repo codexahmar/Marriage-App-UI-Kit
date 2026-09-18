@@ -123,8 +123,8 @@ Flutter-Dating-App-Ui/
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/codexahmar/Flutter-Dating-App-Ui.git
-   cd Flutter-Dating-App-Ui
+   git clone https://github.com/codexahmar/Dating-App-UI-Kit
+   cd Dating-App-UI-Kit
    ```
 
 2. **Install dependencies:**
