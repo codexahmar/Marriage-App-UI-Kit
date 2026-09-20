@@ -13,7 +13,7 @@ class ExploreFilterModal extends StatefulWidget {
   const ExploreFilterModal({
     super.key,
     this.initialInterestedIn = "Girls",
-    this.initialLocation = "Chicago, USA",
+    this.initialLocation = "Islamabad, Pakistan",
     this.initialDistance = 40.0,
     this.initialAgeRange = const RangeValues(20, 28),
     this.onApply,
@@ -22,7 +22,7 @@ class ExploreFilterModal extends StatefulWidget {
   static void show(
     BuildContext context, {
     String initialInterestedIn = "Girls",
-    String initialLocation = "Chicago, USA",
+    String initialLocation = "Islamabad, Pakistan",
     double initialDistance = 40.0,
     RangeValues initialAgeRange = const RangeValues(20, 28),
     Function(String interestedIn, String location, double distance, RangeValues ageRange)? onApply,
@@ -65,7 +65,7 @@ class _ExploreFilterModalState extends State<ExploreFilterModal> {
   void _resetFilters() {
     setState(() {
       _selectedInterestedIn = "Girls";
-      _location = "Chicago, USA";
+      _location = "Islamabad, Pakistan";
       _distance = 40.0;
       _ageRange = const RangeValues(20, 28);
     });

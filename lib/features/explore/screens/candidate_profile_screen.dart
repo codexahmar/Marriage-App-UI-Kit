@@ -30,12 +30,19 @@ class CandidateProfileScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
       decoration: BoxDecoration(
-        color: AppColors.cardBackground,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
           color: AppColors.border,
-          width: 1,
+          width: 1.2,
         ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.03),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -163,36 +170,48 @@ class CandidateProfileScreen extends StatelessWidget {
                   const SizedBox(height: 6),
 
                   // Profession & Distance
-                  Row(
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    spacing: 14,
+                    runSpacing: 6,
                     children: [
-                      const Icon(
-                        Icons.work_outline_rounded,
-                        color: AppColors.textSecondary,
-                        size: 15,
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(
+                            Icons.work_outline_rounded,
+                            color: AppColors.textSecondary,
+                            size: 15,
+                          ),
+                          const SizedBox(width: 6),
+                          Text(
+                            effectiveCandidate.profession,
+                            style: GoogleFonts.plusJakartaSans(
+                              color: AppColors.textSecondary,
+                              fontSize: 14.5,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(width: 6),
-                      Text(
-                        effectiveCandidate.profession,
-                        style: GoogleFonts.plusJakartaSans(
-                          color: AppColors.textSecondary,
-                          fontSize: 14.5,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      const SizedBox(width: 14),
-                      const Icon(
-                        Icons.location_on_outlined,
-                        color: AppColors.textSecondary,
-                        size: 15,
-                      ),
-                      const SizedBox(width: 4),
-                      Text(
-                        effectiveCandidate.distance,
-                        style: GoogleFonts.plusJakartaSans(
-                          color: AppColors.textSecondary,
-                          fontSize: 14.5,
-                          fontWeight: FontWeight.w500,
-                        ),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(
+                            Icons.location_on_outlined,
+                            color: AppColors.textSecondary,
+                            size: 15,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            effectiveCandidate.distance,
+                            style: GoogleFonts.plusJakartaSans(
+                              color: AppColors.textSecondary,
+                              fontSize: 14.5,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -203,10 +222,10 @@ class CandidateProfileScreen extends StatelessWidget {
                     spacing: 8,
                     runSpacing: 8,
                     children: [
-                      _buildFactChip(Icons.straighten_rounded, "5'8 (173 cm)"),
-                      _buildFactChip(Icons.auto_awesome_rounded, "Virgo"),
-                      _buildFactChip(Icons.wine_bar_rounded, "Social Drinker"),
-                      _buildFactChip(Icons.fitness_center_rounded, "Active Lifestyle"),
+                      _buildFactChip(Icons.straighten_rounded, "5'10 (178 cm)"),
+                      _buildFactChip(Icons.mosque_rounded, "Practicing Muslim"),
+                      _buildFactChip(Icons.restaurant_rounded, "Halal Diet"),
+                      _buildFactChip(Icons.family_restroom_rounded, "Family Oriented"),
                     ],
                   ),
                   const SizedBox(height: 24),
@@ -235,9 +254,9 @@ class CandidateProfileScreen extends StatelessWidget {
 
                   // Conversation Starter Prompt Card
                   const CandidatePromptCard(
-                    question: "My simple pleasures in life...",
+                    question: "My ideal vision for marriage...",
                     answer:
-                        "Exploring hidden vinyl record shops, catching sunset views over the skyline, and brewing specialty pourover coffee on lazy Sundays.",
+                        "A blessed partnership rooted in mutual respect, sincerity, shared laughter, emotional support, and raising a beautiful family with deen & dunya balance.",
                   ),
                   const SizedBox(height: 24),
 

@@ -24,9 +24,6 @@ class SwipeCardItem extends StatelessWidget {
     final name = candidate.name;
     final age = candidate.age;
     final profession = candidate.profession;
-    final distance = candidate.distance;
-    final bio = candidate.bio;
-    final interests = candidate.interests;
     final isVerified = candidate.isVerified;
 
     // Calculate real-time swipe stamp opacity based on drag progress
@@ -323,96 +320,45 @@ class SwipeCardItem extends StatelessWidget {
                         ),
                     ],
                   ),
-                  const SizedBox(height: 3),
+                  const SizedBox(height: 4),
 
-                  // Profession & Distance
+                  // Profession (Full Width & Clean)
                   Row(
                     children: [
                       Icon(
                         Icons.work_outline_rounded,
-                        color: Colors.white.withValues(alpha: 0.85),
-                        size: 14,
+                        color: Colors.white.withValues(alpha: 0.9),
+                        size: 15,
                       ),
-                      const SizedBox(width: 5),
+                      const SizedBox(width: 6),
                       Expanded(
                         child: Text(
                           profession,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.plusJakartaSans(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                      if (distance.isNotEmpty) ...[
-                        const SizedBox(width: 8),
-                        const Icon(
-                          Icons.near_me_rounded,
-                          color: AppColors.primary,
-                          size: 13,
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          distance,
-                          style: GoogleFonts.plusJakartaSans(
-                            color: Colors.white.withValues(alpha: 0.9),
-                            fontSize: 12.5,
+                            color: Colors.white.withValues(alpha: 0.95),
+                            fontSize: 14.5,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                      ],
+                      ),
                     ],
                   ),
                   const SizedBox(height: 8),
 
-                  // Bio / Prompt Snippet
-                  if (bio.isNotEmpty)
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
-                      child: Text(
-                        bio,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.plusJakartaSans(
-                          color: Colors.white.withValues(alpha: 0.82),
-                          fontSize: 12.5,
-                          height: 1.35,
-                          fontWeight: FontWeight.w400,
-                        ),
+                  // Short Bio / Prompt Snippet
+                  if (candidate.displayShortBio.isNotEmpty)
+                    Text(
+                      candidate.displayShortBio,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.plusJakartaSans(
+                        color: Colors.white.withValues(alpha: 0.88),
+                        fontSize: 13,
+                        height: 1.35,
+                        fontWeight: FontWeight.w400,
                       ),
-                    ),
-
-                  // Interest Chips Row
-                  if (interests.isNotEmpty)
-                    Wrap(
-                      spacing: 6,
-                      runSpacing: 5,
-                      children: interests.take(3).map((interest) {
-                        return Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.black.withValues(alpha: 0.45),
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              color: Colors.white.withValues(alpha: 0.25),
-                              width: 1,
-                            ),
-                          ),
-                          child: Text(
-                            interest,
-                            style: GoogleFonts.plusJakartaSans(
-                              color: Colors.white,
-                              fontSize: 11.5,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        );
-                      }).toList(),
                     ),
                 ],
               ),

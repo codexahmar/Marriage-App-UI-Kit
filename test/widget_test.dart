@@ -106,7 +106,7 @@ void main() {
     );
 
     expect(find.text("Discover"), findsOneWidget);
-    expect(find.text("Chicago, IL"), findsOneWidget);
+    expect(find.text("Islamabad, PK"), findsOneWidget);
     expect(find.byIcon(Icons.close_rounded), findsOneWidget);
     expect(find.byIcon(Icons.star_rounded), findsOneWidget);
     expect(find.byIcon(Icons.favorite_rounded), findsOneWidget);
@@ -126,8 +126,8 @@ void main() {
     expect(find.text("Messages"), findsOneWidget);
     expect(find.text("New Matches"), findsOneWidget);
     expect(find.text("Conversations"), findsOneWidget);
-    expect(find.text("Jessica Parker"), findsOneWidget);
-    expect(find.text("Alice Vance"), findsOneWidget);
+    expect(find.text("Zainab Tariq"), findsOneWidget);
+    expect(find.text("Maryam"), findsAtLeastNWidgets(1));
   });
 
   testWidgets('MatchesScreen renders matches, tabs and action cards',
@@ -144,8 +144,8 @@ void main() {
     expect(find.text("Matches"), findsOneWidget);
     expect(find.text("All (6)"), findsOneWidget);
     expect(find.text("Today (3)"), findsOneWidget);
-    expect(find.text("Leilani, 19"), findsOneWidget);
-    expect(find.text("Annabelle, 20"), findsOneWidget);
+    expect(find.text("Aiman, 22"), findsOneWidget);
+    expect(find.text("Anum, 23"), findsOneWidget);
   });
 
   testWidgets('ExploreFilterModal renders all filter controls properly',
@@ -165,7 +165,7 @@ void main() {
     expect(find.text("Boys"), findsOneWidget);
     expect(find.text("Both"), findsOneWidget);
     expect(find.text("Location"), findsOneWidget);
-    expect(find.text("Chicago, USA"), findsOneWidget);
+    expect(find.text("Islamabad, Pakistan"), findsOneWidget);
     expect(find.text("Distance"), findsOneWidget);
     expect(find.text("40km"), findsOneWidget);
     expect(find.text("Age"), findsOneWidget);
@@ -202,8 +202,8 @@ void main() {
       ),
     );
 
-    expect(find.text("Alice Vance, 22"), findsOneWidget);
-    expect(find.text("Lifestyle Creator"), findsOneWidget);
+    expect(find.text("Zorawar Afridi, 26"), findsOneWidget);
+    expect(find.text("Corporate Lawyer & Equestrian"), findsOneWidget);
     expect(find.text("About"), findsOneWidget);
     expect(find.text("Interests"), findsOneWidget);
     expect(find.text("Gallery"), findsOneWidget);

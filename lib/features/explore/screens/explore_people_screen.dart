@@ -97,7 +97,7 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
                 ),
                 const SizedBox(width: 4),
                 Text(
-                  "Chicago, IL",
+                  "Islamabad, PK",
                   style: GoogleFonts.plusJakartaSans(
                     fontSize: 12.5,
                     fontWeight: FontWeight.w600,
