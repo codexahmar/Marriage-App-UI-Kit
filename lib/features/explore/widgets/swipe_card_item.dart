@@ -31,45 +31,48 @@ class SwipeCardItem extends StatelessWidget {
     final double nopeOpacity = (-percentX / 25).clamp(0.0, 1.0);
     final double starOpacity = (-percentY / 25).clamp(0.0, 1.0);
 
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(28),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.14),
-            blurRadius: 24,
-            offset: const Offset(0, 12),
-          ),
-          BoxShadow(
-            color: AppColors.primary.withValues(alpha: 0.06),
-            blurRadius: 30,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(28),
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            // 1. Candidate Photo
-            Hero(
-              tag: 'candidate_photo_${candidate.name}',
-              child: Image.asset(
-                imagePath,
-                fit: BoxFit.cover,
-                width: double.infinity,
-                height: double.infinity,
-                errorBuilder: (context, error, stackTrace) => Container(
-                  color: AppColors.cardBackground,
-                  child: const Icon(
-                    Icons.person,
-                    size: 80,
-                    color: AppColors.textMuted,
+    return GestureDetector(
+      onTap: onInfoTap,
+      behavior: HitTestBehavior.opaque,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(28),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.14),
+              blurRadius: 24,
+              offset: const Offset(0, 12),
+            ),
+            BoxShadow(
+              color: AppColors.primary.withValues(alpha: 0.06),
+              blurRadius: 30,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(28),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              // 1. Candidate Photo
+              Hero(
+                tag: 'candidate_photo_${candidate.name}',
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: double.infinity,
+                  errorBuilder: (context, error, stackTrace) => Container(
+                    color: AppColors.cardBackground,
+                    child: const Icon(
+                      Icons.person,
+                      size: 80,
+                      color: AppColors.textMuted,
+                    ),
                   ),
                 ),
               ),
-            ),
 
             // 2. Multi-stop Deep Gradient at Bottom for ultra-crisp typography
             Positioned.fill(
@@ -127,10 +130,10 @@ class SwipeCardItem extends StatelessWidget {
                             ),
                             const SizedBox(width: 8),
                             Text(
-                              "DATE",
+                              "SEND RISHTA",
                               style: GoogleFonts.plusJakartaSans(
                                 color: const Color(0xFF10B981),
-                                fontSize: 24,
+                                fontSize: 22,
                                 fontWeight: FontWeight.w900,
                                 letterSpacing: 2,
                               ),
@@ -234,7 +237,7 @@ class SwipeCardItem extends StatelessWidget {
                             ),
                             const SizedBox(width: 8),
                             Text(
-                              "SUPER LIKE",
+                              "SHORTLIST",
                               style: GoogleFonts.plusJakartaSans(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -366,6 +369,7 @@ class SwipeCardItem extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 }

@@ -44,9 +44,9 @@ class SwipeActionButtons extends StatelessWidget {
                   iconSize: 28,
                 ),
 
-                // Right Button: SUPER LIKE (3D Neumorphic)
+                // Right Button: SHORTLIST (3D Neumorphic)
                 _NeumorphicActionButton(
-                  label: "SUPER LIKE",
+                  label: "SHORTLIST",
                   icon: Icons.star_rounded,
                   iconColor: const Color(0xFF8A2387),
                   onTap: onStar,
@@ -57,11 +57,11 @@ class SwipeActionButtons extends StatelessWidget {
             ),
           ),
 
-          // Center Button: Distinctly elevated higher DATE / LIKE Hero Button (3D Neumorphic)
+          // Center Button: Distinctly elevated higher RISHTA Hero Button (3D Neumorphic)
           Positioned(
             top: 0,
             child: _NeumorphicActionButton(
-              label: "DATE",
+              label: "RISHTA",
               icon: Icons.favorite_rounded,
               iconColor: AppColors.primary,
               isHero: true,

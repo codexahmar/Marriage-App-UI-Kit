@@ -18,7 +18,7 @@ class CandidatePromptCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: AppColors.cardBackground,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: AppColors.border,
