@@ -58,7 +58,7 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: AppColors.cardBackground.withValues(alpha: 0.6),
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(
                     color: AppColors.border,
@@ -123,7 +123,7 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
                       width: 44,
                       height: 44,
                       decoration: BoxDecoration(
-                        color: AppColors.cardBackground.withValues(alpha: 0.6),
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(14),
                         border: Border.all(
                           color: AppColors.border,
@@ -167,7 +167,7 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
                 child: Stack(
                   clipBehavior: Clip.none,
                   children: [
-                    // Left Side Peek Card (Slightly tilted left)
+                    // Left Side Peek Card (Upcoming candidate N+1 tilted left)
                     Positioned(
                       left: -8,
                       top: 14,
@@ -182,8 +182,8 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
                             color: AppColors.cardBackground,
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withValues(alpha: 0.12),
-                                blurRadius: 18,
+                                color: Colors.black.withValues(alpha: 0.10),
+                                blurRadius: 16,
                                 offset: const Offset(-4, 8),
                               ),
                             ],
@@ -212,7 +212,7 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
                       ),
                     ),
 
-                    // Right Side Peek Card (Slightly tilted right)
+                    // Right Side Peek Card (Upcoming candidate N+2 tilted right)
                     Positioned(
                       right: -8,
                       top: 14,
@@ -227,8 +227,8 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
                             color: AppColors.cardBackground,
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withValues(alpha: 0.12),
-                                blurRadius: 18,
+                                color: Colors.black.withValues(alpha: 0.10),
+                                blurRadius: 16,
                                 offset: const Offset(4, 8),
                               ),
                             ],
@@ -264,8 +264,10 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
                       duration: const Duration(milliseconds: 650),
                       maxAngle: 25,
                       threshold: 50,
-                      numberOfCardsDisplayed: 1,
+                      numberOfCardsDisplayed: 2,
                       isLoop: true,
+                      backCardOffset: const Offset(0, -12),
+                      scale: 0.94,
                       cardBuilder: (context, index, percentX, percentY) {
                         final candidate = _candidates[index];
                         return SwipeCardItem(
@@ -292,6 +294,7 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
               ),
             ),
 
+            const SizedBox(height: 10),
             // Elevated Swipe Action Buttons (Pass, Elevated Heart/Date in middle top, Super Like)
             SwipeActionButtons(
               onDislike: () {
@@ -304,6 +307,7 @@ class _ExplorePeopleScreenState extends State<ExplorePeopleScreen> {
                 _cardSwiperController.swipe(CardSwiperDirection.right);
               },
             ),
+            const SizedBox(height: 28),
           ],
         ),
       ),

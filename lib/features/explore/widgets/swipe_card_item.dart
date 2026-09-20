@@ -28,7 +28,6 @@ class SwipeCardItem extends StatelessWidget {
     final bio = candidate.bio;
     final interests = candidate.interests;
     final isVerified = candidate.isVerified;
-    final matchPercentage = candidate.matchPercentage;
 
     // Calculate real-time swipe stamp opacity based on drag progress
     final double likeOpacity = (percentX / 25).clamp(0.0, 1.0);
@@ -75,29 +74,7 @@ class SwipeCardItem extends StatelessWidget {
               ),
             ),
 
-            // 2. Top vignette gradient
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              height: 140,
-              child: IgnorePointer(
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Colors.black.withValues(alpha: 0.7),
-                        Colors.transparent,
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            // 3. Multi-stop Deep Gradient at Bottom for ultra-crisp typography
+            // 2. Multi-stop Deep Gradient at Bottom for ultra-crisp typography
             Positioned.fill(
               child: IgnorePointer(
                 child: DecoratedBox(
@@ -115,93 +92,6 @@ class SwipeCardItem extends StatelessWidget {
                       stops: const [0.0, 0.40, 0.60, 0.80, 1.0],
                     ),
                   ),
-                ),
-              ),
-            ),
-
-            // 4. Top Information Pills: Distance & Vibe + Match Score
-            Positioned(
-              top: 16,
-              left: 16,
-              right: 16,
-              child: IgnorePointer(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Distance & Vibe Capsule
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.black.withValues(alpha: 0.45),
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: Colors.white.withValues(alpha: 0.25),
-                          width: 1,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(
-                            Icons.near_me_rounded,
-                            color: AppColors.primary,
-                            size: 13,
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            distance,
-                            style: GoogleFonts.plusJakartaSans(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    // Match Percentage Badge
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
-                      ),
-                      decoration: BoxDecoration(
-                        gradient: AppColors.romanticGradient,
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: [
-                          BoxShadow(
-                            color: AppColors.primary.withValues(alpha: 0.4),
-                            blurRadius: 8,
-                            offset: const Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(
-                            Icons.bolt_rounded,
-                            color: Colors.amber,
-                            size: 15,
-                          ),
-                          const SizedBox(width: 3),
-                          Text(
-                            "$matchPercentage% Match",
-                            style: GoogleFonts.plusJakartaSans(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w800,
-                              letterSpacing: 0.2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
                 ),
               ),
             ),
@@ -435,7 +325,7 @@ class SwipeCardItem extends StatelessWidget {
                   ),
                   const SizedBox(height: 3),
 
-                  // Profession with Icon
+                  // Profession & Distance
                   Row(
                     children: [
                       Icon(
@@ -456,6 +346,23 @@ class SwipeCardItem extends StatelessWidget {
                           ),
                         ),
                       ),
+                      if (distance.isNotEmpty) ...[
+                        const SizedBox(width: 8),
+                        const Icon(
+                          Icons.near_me_rounded,
+                          color: AppColors.primary,
+                          size: 13,
+                        ),
+                        const SizedBox(width: 4),
+                        Text(
+                          distance,
+                          style: GoogleFonts.plusJakartaSans(
+                            color: Colors.white.withValues(alpha: 0.9),
+                            fontSize: 12.5,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
                     ],
                   ),
                   const SizedBox(height: 8),
