@@ -20,7 +20,7 @@ class SwipeActionButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 32.0),
-      height: 118,
+      height: 116,
       child: Stack(
         alignment: Alignment.bottomCenter,
         clipBehavior: Clip.none,
@@ -34,48 +34,40 @@ class SwipeActionButtons extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                // Left Button: PASS
-                _ScaleActionButton(
+                // Left Button: PASS (3D Neumorphic)
+                _NeumorphicActionButton(
                   label: "PASS",
                   icon: Icons.close_rounded,
-                  color: const Color(0xFFEF4444),
+                  iconColor: const Color(0xFFEF4444),
                   onTap: onDislike,
                   size: 60,
-                  iconSize: 30,
+                  iconSize: 28,
                 ),
 
-                // Right Button: SUPER LIKE
-                _ScaleActionButton(
+                // Right Button: SUPER LIKE (3D Neumorphic)
+                _NeumorphicActionButton(
                   label: "SUPER LIKE",
                   icon: Icons.star_rounded,
-                  color: const Color(0xFF8A2387),
+                  iconColor: const Color(0xFF8A2387),
                   onTap: onStar,
                   size: 60,
-                  iconSize: 30,
+                  iconSize: 28,
                 ),
               ],
             ),
           ),
 
-          // Center Button: Distinctly elevated higher DATE / LIKE Hero Button
+          // Center Button: Distinctly elevated higher DATE / LIKE Hero Button (3D Neumorphic)
           Positioned(
             top: 0,
-            child: _ScaleActionButton(
+            child: _NeumorphicActionButton(
               label: "DATE",
               icon: Icons.favorite_rounded,
-              color: AppColors.primary,
+              iconColor: AppColors.primary,
               isHero: true,
-              gradient: AppColors.primaryGradient,
               onTap: onLike,
               size: 78,
               iconSize: 38,
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.primary.withValues(alpha: 0.45),
-                  blurRadius: 22,
-                  offset: const Offset(0, 8),
-                ),
-              ],
             ),
           ),
         ],
@@ -84,34 +76,31 @@ class SwipeActionButtons extends StatelessWidget {
   }
 }
 
-class _ScaleActionButton extends StatefulWidget {
+class _NeumorphicActionButton extends StatefulWidget {
   final String label;
   final IconData icon;
-  final Color color;
+  final Color iconColor;
   final VoidCallback onTap;
   final double size;
   final double iconSize;
   final bool isHero;
-  final Gradient? gradient;
-  final List<BoxShadow>? boxShadow;
 
-  const _ScaleActionButton({
+  const _NeumorphicActionButton({
     required this.label,
     required this.icon,
-    required this.color,
+    required this.iconColor,
     required this.onTap,
     required this.size,
     required this.iconSize,
     this.isHero = false,
-    this.gradient,
-    this.boxShadow,
   });
 
   @override
-  State<_ScaleActionButton> createState() => _ScaleActionButtonState();
+  State<_NeumorphicActionButton> createState() =>
+      _NeumorphicActionButtonState();
 }
 
-class _ScaleActionButtonState extends State<_ScaleActionButton>
+class _NeumorphicActionButtonState extends State<_NeumorphicActionButton>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
@@ -124,7 +113,7 @@ class _ScaleActionButtonState extends State<_ScaleActionButton>
       duration: const Duration(milliseconds: 100),
       reverseDuration: const Duration(milliseconds: 140),
     );
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.88).animate(
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.90).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
   }
@@ -154,6 +143,7 @@ class _ScaleActionButtonState extends State<_ScaleActionButton>
       onTapDown: _handleTapDown,
       onTapUp: _handleTapUp,
       onTapCancel: _handleTapCancel,
+      behavior: HitTestBehavior.opaque,
       child: AnimatedBuilder(
         animation: _scaleAnimation,
         builder: (context, child) => Transform.scale(
@@ -163,53 +153,80 @@ class _ScaleActionButtonState extends State<_ScaleActionButton>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            // 3D Neumorphic Elevated Circle
             Container(
               width: widget.size,
               height: widget.size,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: widget.gradient == null ? Colors.white : null,
-                gradient: widget.gradient,
-                border: widget.gradient == null
-                    ? Border.all(
-                        color: widget.color.withValues(alpha: 0.28),
-                        width: 1.5,
-                      )
-                    : null,
-                boxShadow: widget.boxShadow ??
-                    [
-                      BoxShadow(
-                        color: widget.color.withValues(alpha: 0.16),
-                        blurRadius: 14,
-                        offset: const Offset(0, 5),
-                      ),
-                    ],
+                gradient: const LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Colors.white,
+                    Color(0xFFF6F7FB),
+                    Color(0xFFE9EBF1),
+                  ],
+                  stops: [0.0, 0.55, 1.0],
+                ),
+                border: Border.all(
+                  color: Colors.white,
+                  width: 2.0,
+                ),
+                boxShadow: [
+                  // Top-left bright specular reflection / 3D highlight
+                  const BoxShadow(
+                    color: Colors.white,
+                    offset: Offset(-5, -5),
+                    blurRadius: 10,
+                    spreadRadius: 1,
+                  ),
+                  // Bottom-right soft depth shadow for tactile extrusion
+                  BoxShadow(
+                    color: const Color(0xFFB8BCC8).withValues(alpha: 0.55),
+                    offset: const Offset(5, 6),
+                    blurRadius: 12,
+                    spreadRadius: 1,
+                  ),
+                ],
               ),
               child: Center(
-                child: Icon(
-                  widget.icon,
-                  color: widget.isHero ? Colors.white : widget.color,
-                  size: widget.iconSize,
+                // Subtle inner 3D disc to enhance depth
+                child: Container(
+                  width: widget.size - 8,
+                  height: widget.size - 8,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        const Color(0xFFF9FAFC),
+                        Colors.white.withValues(alpha: 0.9),
+                        const Color(0xFFECEEF4),
+                      ],
+                    ),
+                  ),
+                  child: Center(
+                    child: Icon(
+                      widget.icon,
+                      color: widget.iconColor,
+                      size: widget.iconSize,
+                    ),
+                  ),
                 ),
               ),
             ),
-            const SizedBox(height: 6),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-              decoration: BoxDecoration(
-                color: widget.isHero
-                    ? AppColors.primaryLight
-                    : widget.color.withValues(alpha: 0.08),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Text(
-                widget.label,
-                style: GoogleFonts.plusJakartaSans(
-                  fontSize: widget.isHero ? 12 : 11,
-                  fontWeight: FontWeight.w800,
-                  color: widget.color,
-                  letterSpacing: 0.6,
-                ),
+            const SizedBox(height: 8),
+
+            // Clean Label with no container and neutral color
+            Text(
+              widget.label,
+              style: GoogleFonts.plusJakartaSans(
+                fontSize: widget.isHero ? 12 : 11,
+                fontWeight: FontWeight.w700,
+                color: AppColors.textSecondary,
+                letterSpacing: 0.8,
               ),
             ),
           ],
