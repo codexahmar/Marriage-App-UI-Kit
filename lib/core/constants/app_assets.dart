@@ -22,12 +22,20 @@ class AppImages {
   // User Profile
   static const String userProfile = 'assets/images/img_user_profile.png';
 
-  // Candidates & Explore
+  // Candidates & Explore (Pakistani / Matrimonial Profiles)
+  static const String boy1 = 'assets/images/boy1.jpeg';
+  static const String boy2 = 'assets/images/boy2.jpeg';
+  static const String boy3 = 'assets/images/boy3.jpeg';
+  static const String boy4 = 'assets/images/boy4.jpeg';
+  static const String hijabiGirl1 = 'assets/images/hijabi_girl1.jpeg';
+  static const String hijabiGirl2 = 'assets/images/hijabigirl2.jpeg';
+
+  // Legacy Candidate 5 (Retained for rich profile gallery)
+  static const String candidate5 = 'assets/images/img_candidate_5.png';
   static const String candidate1 = 'assets/images/img_candidate_1.png';
   static const String candidate2 = 'assets/images/img_candidate_2.png';
   static const String candidate3 = 'assets/images/img_candidate_3.png';
   static const String candidate4 = 'assets/images/img_candidate_4.png';
-  static const String candidate5 = 'assets/images/img_candidate_5.png';
 
   // Candidate Gallery Photos
   static const String gallery1 = 'assets/images/img_gallery_1.png';
@@ -75,6 +83,12 @@ class AppAssets {
   // Profile & Candidates
   static const String cardSwipe1 = AppImages.userProfile;
   static const String userProfile = AppImages.userProfile;
+  static const String boy1 = AppImages.boy1;
+  static const String boy2 = AppImages.boy2;
+  static const String boy3 = AppImages.boy3;
+  static const String boy4 = AppImages.boy4;
+  static const String hijabiGirl1 = AppImages.hijabiGirl1;
+  static const String hijabiGirl2 = AppImages.hijabiGirl2;
   static const String candidate1 = AppImages.candidate1;
   static const String candidate2 = AppImages.candidate2;
   static const String candidate3 = AppImages.candidate3;
