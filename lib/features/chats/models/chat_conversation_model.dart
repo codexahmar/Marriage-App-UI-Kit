@@ -148,7 +148,7 @@ class ChatConversationModel {
       unreadCount: 0,
       isOnline: false,
       hasStory: false,
-      tag: "💼 Tech Founder",
+      tag: "💼 Product Designer",
       isVoiceMessage: true,
       isVerified: true,
       isMatch: false,

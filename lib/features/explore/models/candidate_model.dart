@@ -70,12 +70,12 @@ class CandidateModel {
       image: AppImages.boy1,
       name: "Hamza Rehman",
       age: 24,
-      profession: "Senior Product Designer & Founder",
+      profession: "Senior Product Designer",
       distance: "4.5 km away • Bahria Town, Islamabad",
-      shortBio: "Product designer building digital fintech apps for Muslims.",
+      shortBio: "Senior product designer building digital fintech apps.",
       bio:
-          "Senior product designer working in Islamic fintech & startups. Looking for an educated, emotionally mature life partner who values both spiritual growth and worldly ambition.",
-      vibe: "💼 Tech Entrepreneur",
+          "Senior product designer working in Islamic fintech. Looking for an educated, emotionally mature life partner who values both spiritual growth and worldly ambition.",
+      vibe: "🎨 Product Designer",
       interests: [
         "💻 Fintech & UI",
         "📚 Urdu Adab",

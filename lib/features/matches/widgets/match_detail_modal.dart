@@ -99,45 +99,6 @@ class MatchDetailModal extends StatelessWidget {
                             ),
                           ),
 
-                          // Top Match Percentage Badge
-                          Positioned(
-                            top: 14,
-                            right: 14,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 6,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.black.withValues(alpha: 0.55),
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                  color: Colors.white.withValues(alpha: 0.2),
-                                  width: 1,
-                                ),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Icon(
-                                    Icons.bolt_rounded,
-                                    color: Colors.amber,
-                                    size: 15,
-                                  ),
-                                  const SizedBox(width: 4),
-                                  Text(
-                                    "${match.matchPercentage}% Match",
-                                    style: GoogleFonts.plusJakartaSans(
-                                      color: Colors.white,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-
                           // Bottom Tap to Expand Indicator
                           Positioned(
                             bottom: 12,
@@ -271,7 +232,7 @@ class MatchDetailModal extends StatelessWidget {
                           vertical: 8,
                         ),
                         decoration: BoxDecoration(
-                          color: AppColors.cardBackground,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
                             color: AppColors.border,
@@ -297,7 +258,7 @@ class MatchDetailModal extends StatelessWidget {
                     width: double.infinity,
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: AppColors.cardBackground,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
                         color: AppColors.border,

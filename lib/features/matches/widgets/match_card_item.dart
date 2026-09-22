@@ -64,40 +64,6 @@ class MatchCardItem extends StatelessWidget {
                 ),
               ),
 
-              // Top Match Percentage Badge
-              Positioned(
-                top: 10,
-                left: 10,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.black.withValues(alpha: 0.5),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Icon(
-                        Icons.bolt_rounded,
-                        color: Colors.amber,
-                        size: 13,
-                      ),
-                      const SizedBox(width: 3),
-                      Text(
-                        "${match.matchPercentage}%",
-                        style: GoogleFonts.plusJakartaSans(
-                          color: Colors.white,
-                          fontSize: 11,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
 
               // Bottom Info and Action Buttons
               Positioned(
@@ -113,23 +79,32 @@ class MatchCardItem extends StatelessWidget {
                       children: [
                         Flexible(
                           child: Text(
-                            "${match.name}, ${match.age}",
+                            match.name,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.plusJakartaSans(
                               color: Colors.white,
-                              fontSize: 16,
+                              fontSize: 15,
                               fontWeight: FontWeight.w800,
                               letterSpacing: -0.3,
                             ),
                           ),
                         ),
+                        Text(
+                          ", ${match.age}",
+                          style: GoogleFonts.plusJakartaSans(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: -0.3,
+                          ),
+                        ),
                         if (match.isVerified) ...[
-                          const SizedBox(width: 4),
+                          const SizedBox(width: 3),
                           const Icon(
                             Icons.verified_rounded,
                             color: Color(0xFF3B82F6),
-                            size: 14,
+                            size: 13,
                           ),
                         ],
                       ],
