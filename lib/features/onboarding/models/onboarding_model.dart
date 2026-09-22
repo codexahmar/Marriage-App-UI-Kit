@@ -18,28 +18,28 @@ class OnboardingModel {
 
   static const List<OnboardingModel> defaultPages = [
     OnboardingModel(
-      imagePath: AppImages.candidate2,
-      tag: "Verified Profiles",
-      tagIcon: Icons.verified_rounded,
-      title: "Discover Real Connections",
-      description:
-          "Explore authentic profiles verified to ensure you meet genuine people who share your vibe and values.",
-    ),
-    OnboardingModel(
-      imagePath: AppImages.candidate3,
-      tag: "Meaningful Matches",
+      imagePath: AppImages.onboarding1,
+      tag: "💍 Serious Intentions",
       tagIcon: Icons.favorite_rounded,
-      title: "Match On What Matters",
+      title: "Marriage, not casual dating",
       description:
-          "Connect with people who share your passions, lifestyle, and values for deeper, lasting bonds.",
+          "A respectful space for practicing Muslims looking for a spouse who shares their values, lifestyle, and goals.",
     ),
     OnboardingModel(
-      imagePath: AppImages.candidate4,
-      tag: "VIP Perks",
-      tagIcon: Icons.workspace_premium_rounded,
-      title: "Premium Experience",
+      imagePath: AppImages.onboarding2,
+      tag: "🔒 Privacy & Modesty",
+      tagIcon: Icons.lock_outline_rounded,
+      title: "Modesty and privacy first",
       description:
-          "Sign up today and unlock unlimited likes, instant matches, and spotlight perks on us.",
+          "Full control over your visibility with photo privacy options, discreet browsing, and family chaperone support.",
+    ),
+    OnboardingModel(
+      imagePath: AppImages.onboarding3,
+      tag: "✨ Verified Community",
+      tagIcon: Icons.verified_rounded,
+      title: "Real people, verified profiles",
+      description:
+          "Every profile is selfie-verified with genuine background details so you can connect with complete peace of mind.",
     ),
   ];
 }

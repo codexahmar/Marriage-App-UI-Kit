@@ -18,6 +18,10 @@ class AppImages {
   static const String logo = 'assets/images/img_logo.png';
   static const String illustrationPeople = 'assets/images/img_people.png';
   static const String illustrationChat = 'assets/images/img_chat.png';
+  static const String onboarding1 = 'assets/images/onboarding1.jpeg';
+  static const String onboarding2 = 'assets/images/onboarding2.jpeg';
+  static const String onboarding3 = 'assets/images/onboarding3.jpeg';
+  static const String onboarding = 'assets/images/onboarding.jpeg';
 
   // User Profile
   static const String userProfile = 'assets/images/img_user_profile.png';
@@ -79,6 +83,10 @@ class AppAssets {
   static const String logo = AppImages.logo;
   static const String people = AppImages.illustrationPeople;
   static const String chat = AppImages.illustrationChat;
+  static const String onboarding1 = AppImages.onboarding1;
+  static const String onboarding2 = AppImages.onboarding2;
+  static const String onboarding3 = AppImages.onboarding3;
+  static const String onboarding = AppImages.onboarding;
 
   // Profile & Candidates
   static const String cardSwipe1 = AppImages.userProfile;
