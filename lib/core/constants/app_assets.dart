@@ -21,7 +21,6 @@ class AppImages {
   static const String onboarding1 = 'assets/images/onboarding1.jpeg';
   static const String onboarding2 = 'assets/images/onboarding2.jpeg';
   static const String onboarding3 = 'assets/images/onboarding3.jpeg';
-  static const String onboarding = 'assets/images/onboarding.jpeg';
 
   // User Profile
   static const String userProfile = 'assets/images/img_user_profile.png';
@@ -33,13 +32,7 @@ class AppImages {
   static const String boy4 = 'assets/images/boy4.jpeg';
   static const String hijabiGirl1 = 'assets/images/hijabi_girl1.jpeg';
   static const String hijabiGirl2 = 'assets/images/hijabigirl2.jpeg';
-
-  // Legacy Candidate 5 (Retained for rich profile gallery)
   static const String candidate5 = 'assets/images/img_candidate_5.png';
-  static const String candidate1 = 'assets/images/img_candidate_1.png';
-  static const String candidate2 = 'assets/images/img_candidate_2.png';
-  static const String candidate3 = 'assets/images/img_candidate_3.png';
-  static const String candidate4 = 'assets/images/img_candidate_4.png';
 
   // Candidate Gallery Photos
   static const String gallery1 = 'assets/images/img_gallery_1.png';
@@ -47,14 +40,6 @@ class AppImages {
   static const String gallery3 = 'assets/images/img_gallery_3.png';
   static const String gallery4 = 'assets/images/img_gallery_4.png';
   static const String gallery5 = 'assets/images/img_gallery_5.png';
-
-  // Matches
-  static const String match1 = 'assets/images/img_match_1.png';
-  static const String match2 = 'assets/images/img_match_2.png';
-  static const String match3 = 'assets/images/img_match_3.png';
-  static const String match4 = 'assets/images/img_match_4.png';
-  static const String match5 = 'assets/images/img_match_5.png';
-  static const String match6 = 'assets/images/img_match_6.png';
 }
 
 /// Unified AppAssets facade maintaining descriptive constants and backward compatibility
@@ -86,7 +71,6 @@ class AppAssets {
   static const String onboarding1 = AppImages.onboarding1;
   static const String onboarding2 = AppImages.onboarding2;
   static const String onboarding3 = AppImages.onboarding3;
-  static const String onboarding = AppImages.onboarding;
 
   // Profile & Candidates
   static const String cardSwipe1 = AppImages.userProfile;
@@ -97,17 +81,7 @@ class AppAssets {
   static const String boy4 = AppImages.boy4;
   static const String hijabiGirl1 = AppImages.hijabiGirl1;
   static const String hijabiGirl2 = AppImages.hijabiGirl2;
-  static const String candidate1 = AppImages.candidate1;
-  static const String candidate2 = AppImages.candidate2;
-  static const String candidate3 = AppImages.candidate3;
-  static const String candidate4 = AppImages.candidate4;
   static const String candidate5 = AppImages.candidate5;
-
-  // Legacy candidate aliases
-  static const String girl1 = AppImages.candidate2;
-  static const String girl2 = AppImages.candidate3;
-  static const String girl3 = AppImages.candidate4;
-  static const String girl4 = AppImages.candidate1;
   static const String photoMain = AppImages.candidate5;
 
   // Candidate Gallery Photos
@@ -123,20 +97,4 @@ class AppAssets {
   static const String photoMain4 = AppImages.gallery3;
   static const String photoMain5 = AppImages.gallery4;
   static const String photoMain6 = AppImages.gallery5;
-
-  // Matches
-  static const String match1 = AppImages.match1;
-  static const String match2 = AppImages.match2;
-  static const String match3 = AppImages.match3;
-  static const String match4 = AppImages.match4;
-  static const String match5 = AppImages.match5;
-  static const String match6 = AppImages.match6;
-
-  // Legacy match aliases
-  static const String matches1 = AppImages.match1;
-  static const String matches2 = AppImages.match2;
-  static const String matches3 = AppImages.match3;
-  static const String matches4 = AppImages.match4;
-  static const String matches5 = AppImages.match5;
-  static const String matches6 = AppImages.match6;
 }
